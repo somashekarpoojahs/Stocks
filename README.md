@@ -192,6 +192,17 @@ itself adds anything. Results go to `research/`.
 
 ## Honest limits
 
+- **So far the picks haven't beaten random stocks.** The exit study
+  ([`research/exit_study_2026-10-21.md`](research/exit_study_2026-10-21.md)) covered March 2022 to October 2026:
+  44,401 trades on 1,496 stocks.
+  - Under every exit rule, the scanner's picks did about as well as random stocks bought on the same days.
+    The gap was between −0.04R and +0.01R per trade.
+  - The best exit was holding with only the stop for up to 60 days. Picks made +0.13R per trade; random stocks made +0.14R.
+  - Higher scores did no better than lower ones.
+  - Picks beat random stocks in 2 of 5 years.
+
+  The gains came from the market rising, not from the picking. Use the scanner to find and study setups,
+  not as a proven edge.
 - Daily bars only: no intraday timing.
 - Yahoo data is free and occasionally late or wrong. IBKR's quote is the reference before ordering.
 - No fundamentals or news. A perfect chart can meet bad news the next morning. That is why step 3
