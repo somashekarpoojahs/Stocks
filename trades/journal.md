@@ -1,0 +1,15 @@
+# Trade journal
+
+Every order Claude prepares, and what happened to it. Results are in **R**: 1R = the planned loss at the
+stop, so +2R means it made twice the planned risk. Money amounts are left out on purpose (public repo).
+Rules: [`ROUTINE.md`](../ROUTINE.md).
+
+| Date | Ticker | Technical | News | Limit | Stop | Status | Exit | R |
+|---|---|---|---|---|---|---|---|---|
+| 2026-10-21 | DOCU | A+ (89.7): squeeze firing; RS 95; 8/8 trend rules; at 52-week high, but stretched 4.6 ATR above the 50-day | Expanded Salesforce/Agentforce partnership (14 Oct). Analysts' average target $67.63 is below the price | 79.75 | 74.63 | Prepared, awaiting approval | – | – |
+
+## Running stats
+
+| Trades closed | Win rate | Average R | Total R |
+|---|---|---|---|
+| 0 | – | – | – |

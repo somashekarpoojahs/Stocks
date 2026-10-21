@@ -19,6 +19,8 @@ It finds candidates. It never places trades. Not financial advice.
 | `tests/` | 43 automated tests |
 | `scans/` | Daily reports, written by the GitHub Action (`latest.md`, plus one folder per day) |
 | `research/` | Exit studies: which way of selling works best, on years of data |
+| `trades/` | Trade journal: every order Claude prepares and its result (in R) |
+| `ROUTINE.md` | The daily pre-market routine: how the one order a day is chosen |
 | `examples/` | A sample report (13 stocks, 20 Oct 2026) |
 | `docs/` | Notes: the options spread system and the first trend-start scanner |
 | `extras/` | Earlier one-off tools (options signals, 10x earnings-option screen, trend-start scanner) |
