@@ -16,8 +16,9 @@ It finds candidates. It never places trades. Not financial advice.
 | Folder | What's in it |
 |---|---|
 | `smart_scanner/` | The scanner (Python package) |
-| `tests/` | 37 automated tests |
+| `tests/` | 43 automated tests |
 | `scans/` | Daily reports, written by the GitHub Action (`latest.md`, plus one folder per day) |
+| `research/` | Exit studies: which way of selling works best, on years of data |
 | `examples/` | A sample report (13 stocks, 20 Oct 2026) |
 | `docs/` | Notes: the options spread system and the first trend-start scanner |
 | `extras/` | Earlier one-off tools (options signals, 10x earnings-option screen, trend-start scanner) |
@@ -111,7 +112,7 @@ Prefer GitLab? `.gitlab-ci.yml` does the same there (artifacts instead of commit
 ```bash
 python -m venv .venv && source .venv/bin/activate        # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
-python -m pytest -q                                       # 37 tests, ~30 s
+python -m pytest -q                                       # 43 tests, ~30 s
 python -m smart_scanner scan --universe sp1500 --account 500 --with-backtest
 ```
 
@@ -176,6 +177,18 @@ Results are grouped by score, setup and regime, next to a baseline (an average s
 - **Survivorship bias:** it uses *today's* index members, which flatters results. Read it as a check
   of which setups pull their weight, not as a forecast.
 - If a setup's `avg_R` stays at or below 0 over hundreds of trades, lower its weight in `smart_scanner/scoring.py`.
+
+**Exit study.** `python -m smart_scanner study --period 5y` (or **Actions → exit-study → Run workflow**)
+takes the same entries and compares eight ways of selling:
+
+- fixed 2R or 3R targets,
+- holding with only the stop,
+- trailing stops (3 ATR, Supertrend),
+- selling on a close below the 21-EMA or the 50-day,
+- selling half at 2R.
+
+Each is set against random stocks bought on the same days, so you can see whether the stock picking
+itself adds anything. Results go to `research/`.
 
 ## Honest limits
 

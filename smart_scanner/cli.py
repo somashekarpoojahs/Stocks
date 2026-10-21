@@ -2,6 +2,7 @@
     python -m smart_scanner scan --universe sp1500 --account 500
     python -m smart_scanner backtest --universe sp500 --threshold 70
     python -m smart_scanner scan --source json:my_ibkr_bars.json --universe all
+    python -m smart_scanner study --universe sp1500 --period 5y      # compare exit rules
 
 Personal settings can live in environment variables instead of flags (handy for CI):
 SCANNER_ACCOUNT, SCANNER_CCY_PER_USD, SCANNER_RISK, SCANNER_FEES, SCANNER_UNIVERSE.
@@ -57,7 +58,7 @@ def _config(a) -> Config:
 def main(argv=None):
     p = argparse.ArgumentParser(prog="smart_scanner")
     sub = p.add_subparsers(dest="cmd", required=True)
-    for name in ("scan", "backtest"):
+    for name in ("scan", "backtest", "study"):
         s = sub.add_parser(name)
         s.add_argument("--universe", default=_env("SCANNER_UNIVERSE", "sp1500", str),
                        help="sp500 | sp400 | sp600 | sp1500 | nasdaq100 | all | file:PATH | AAPL,MSFT")
@@ -82,6 +83,9 @@ def main(argv=None):
     bt.add_argument("--threshold", type=float, default=70.0)
     bt.add_argument("--hold", type=int, default=20)
     bt.add_argument("--last-n-bars", type=int, default=None)
+    st = sub.choices["study"]
+    st.add_argument("--threshold", type=float, default=70.0)
+    st.set_defaults(period="5y", out="research")
     a = p.parse_args(argv)
     if a.fees not in FEE_PLANS:
         p.error(f"--fees / SCANNER_FEES must be one of {sorted(FEE_PLANS)}")
@@ -97,6 +101,22 @@ def main(argv=None):
     if a.source != "yahoo" and a.universe not in ("all", "sp1500"):
         keep = set(get_universe(a.universe)) | {cfg.benchmark}
         data = {t: d for t, d in data.items() if t in keep}
+
+    if a.cmd == "study":
+        from pathlib import Path
+
+        from .study import build_markdown, run_study
+        res = run_study(data, cfg, threshold=a.threshold)
+        out = Path(a.out)
+        out.mkdir(parents=True, exist_ok=True)
+        stamp = pd.Timestamp.today().date()
+        md = out / f"exit_study_{stamp}.md"
+        md.write_text(build_markdown(res, a.universe), encoding="utf-8")
+        res.summary.to_csv(out / f"exit_study_{stamp}_summary.csv")
+        pd.set_option("display.width", 220)
+        print(res.summary.round(3).to_string())
+        print("Report:", md)
+        return res
 
     if a.cmd == "backtest":
         r = backtest(data, cfg, side=a.side, threshold=a.threshold, hold=a.hold,

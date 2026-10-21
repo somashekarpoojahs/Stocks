@@ -1,0 +1,51 @@
+# Exit study: compares ways of exiting the scanner's own signals on years of data and
+# saves the write-up into research/. Run it from Actions > exit-study > Run workflow.
+name: exit-study
+
+on:
+  workflow_dispatch:
+    inputs:
+      period:
+        description: "History to test (e.g. 5y, 10y)"
+        default: "5y"
+      universe:
+        description: "Universe (sp1500, sp500, nasdaq100 ...)"
+        default: "sp1500"
+      threshold:
+        description: "Minimum score for a signal"
+        default: "70"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: exit-study
+  cancel-in-progress: false
+
+jobs:
+  study:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      PERIOD: ${{ inputs.period }}
+      UNIVERSE: ${{ inputs.universe }}
+      THRESHOLD: ${{ inputs.threshold }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install
+        run: pip install -r requirements.txt
+      - name: Run the study
+        run: python -m smart_scanner study --universe "$UNIVERSE" --period "$PERIOD" --threshold "$THRESHOLD" --out research
+      - name: Save results into research/
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research
+          if git diff --cached --quiet; then echo "No changes to save"; exit 0; fi
+          git commit -m "Exit study $(date -u +%F) ($PERIOD, $UNIVERSE)"
+          git pull --rebase origin "$GITHUB_REF_NAME"
+          git push origin "HEAD:$GITHUB_REF_NAME"
