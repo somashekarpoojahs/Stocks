@@ -6,7 +6,7 @@ Rules: [`ROUTINE.md`](../ROUTINE.md).
 
 | Date | Ticker | Technical | News | Limit | Stop | Status | Exit | R |
 |---|---|---|---|---|---|---|---|---|
-| 2026-10-21 | DOCU | A+ (89.7): squeeze firing; RS 95; 8/8 trend rules; at 52-week high, but stretched 4.6 ATR above the 50-day | Expanded Salesforce/Agentforce partnership (14 Oct). Analysts' average target $67.63 is below the price | 79.75 | 74.63 | Prepared, awaiting approval | – | – |
+| 2026-10-21 | DOCU | A+ (89.7): squeeze firing; RS 95; 8/8 trend rules; at 52-week high, but stretched 4.6 ATR above the 50-day | Expanded Salesforce/Agentforce partnership (14 Oct). Analysts' average target $67.63 is below the price | 81.20 | 74.63 | First order at 79.75 cancelled unfilled after the price rose. Re-entered at 81.20 on Poo's call (a 1% chase); prepared, awaiting approval | – | – |
 
 ## Running stats
 
