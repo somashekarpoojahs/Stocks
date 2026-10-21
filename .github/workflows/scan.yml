@@ -1,0 +1,73 @@
+# Nightly scan: Monday-Friday after the US close. Saves the report into scans/ in this repo.
+#
+# Your own numbers come from repository variables
+# (Settings > Secrets and variables > Actions > Variables):
+#   ACCOUNT_SIZE (e.g. 500), CCY_PER_USD (0.89 if you size in EUR), RISK (0.02),
+#   FEES (ibkr-fixed | ibkr-tiered | none), UNIVERSE (sp1500 | sp500 | nasdaq100 | ...)
+name: nightly-scan
+
+on:
+  schedule:
+    - cron: "30 21 * * 1-5"   # 21:30 UTC: after the US close (21:00 Irish time) all year round
+  workflow_dispatch:          # "Run workflow" button
+
+permissions:
+  contents: write             # needed to commit the report into scans/
+
+concurrency:
+  group: nightly-scan
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      SCANNER_ACCOUNT: ${{ vars.ACCOUNT_SIZE }}
+      SCANNER_CCY_PER_USD: ${{ vars.CCY_PER_USD }}
+      SCANNER_RISK: ${{ vars.RISK }}
+      SCANNER_FEES: ${{ vars.FEES }}
+      SCANNER_UNIVERSE: ${{ vars.UNIVERSE }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install
+        run: pip install -r requirements.txt
+
+      - name: Test
+        run: python -m pytest -q
+
+      - name: Scan the market
+        run: python -m smart_scanner scan --with-backtest --out reports
+
+      - name: Save the report into scans/
+        run: |
+          day=$(ls reports/scan_*.md | sed -E 's#.*/scan_(.*)\.md#\1#' | sort | tail -1)
+          mkdir -p "scans/$day"
+          cp reports/*"$day"* "scans/$day/"
+          cp "reports/scan_$day.md" scans/latest.md
+          cp "reports/scan_$day.html" scans/latest.html
+          for f in longs watch shorts; do
+            if [ -f "reports/${f}_$day.csv" ]; then cp "reports/${f}_$day.csv" "scans/latest_$f.csv"
+            else rm -f "scans/latest_$f.csv"; fi
+          done
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add scans
+          if git diff --cached --quiet; then echo "No changes to save"; exit 0; fi
+          git commit -m "Scan for $day"
+          git pull --rebase origin "$GITHUB_REF_NAME"
+          git push origin "HEAD:$GITHUB_REF_NAME"
+
+      - name: Keep a copy as a run artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: scan-report
+          path: reports/
+          retention-days: 30

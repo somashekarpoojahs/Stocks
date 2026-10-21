@@ -1,0 +1,62 @@
+<!doctype html><html><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>Smart Scanner · 2026-10-20</title>
+<style>
+:root{--bg:#fff;--fg:#1d1d1f;--mut:#6e6e73;--line:#e5e5ea;--card:#f5f5f7;--up:#0a7d32;--dn:#c62828;
+--on:#0a7d32;--mix:#b26a00;--off:#c62828}
+@media (prefers-color-scheme:dark){:root{--bg:#111;--fg:#f2f2f2;--mut:#a1a1a6;--line:#2c2c2e;
+--card:#1c1c1e;--up:#4cd964;--dn:#ff6b6b;--on:#4cd964;--mix:#ffb340;--off:#ff6b6b}}
+body{background:var(--bg);color:var(--fg);font:15px/1.45 -apple-system,Segoe UI,Roboto,sans-serif;
+margin:0;padding:16px;max-width:1200px;margin:auto}
+h1{font-size:22px;margin:0 0 4px} h2{font-size:18px;margin:28px 0 8px}
+.note,.empty{color:var(--mut);font-size:13px}
+.regime{background:var(--card);border-radius:12px;padding:14px;margin:16px 0}
+.warn{border:1px solid var(--mix);border-radius:12px;padding:10px 14px;margin:12px 0;font-size:13px}
+.warn ul{margin:6px 0 0;padding-left:18px}
+.badge{font-weight:700;padding:3px 10px;border-radius:999px;color:#fff}
+.RISK-ON{background:var(--on)} .MIXED{background:var(--mix)} .RISK-OFF{background:var(--off)}
+.regime ul{list-style:none;padding:0;margin:8px 0 0;columns:2;font-size:13px}
+.ok{color:var(--up)} .no{color:var(--dn)}
+.wrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:13px;white-space:nowrap}
+th,td{padding:7px 9px;border-bottom:1px solid var(--line);text-align:right}
+th:first-child,td:first-child,td:nth-child(4),th:nth-child(4){text-align:left} th{cursor:pointer;background:var(--card);position:sticky;top:0}
+td:first-child,th:first-child{position:sticky;left:0;z-index:1;background:var(--bg);font-weight:600}
+th:first-child{background:var(--card);z-index:2}
+.up{color:var(--up)} .dn{color:var(--dn)} .gAp{color:var(--up);font-weight:700} .gA{color:var(--up)}
+@media (max-width:600px){.regime ul{columns:1}}
+</style></head><body>
+<h1>Smart Scanner · 2026-10-20</h1>
+<div class="note">Data as of 2026-10-20 · 13 stocks scored · universe all</div>
+<div class='warn'><b>Check before acting</b><ul><li>Only 13 stocks scanned, so RS is measured against the S&amp;P 500 rather than ranked against the market. Scan 100+ stocks for true RS ranks.</li><li>Today&#x27;s bar looks unfinished: the typical stock traded only 30% of its normal volume. Breakouts need volume, so re-run after the US close (about 21:00 Irish time) before acting.</li></ul></div>
+<div class="regime"><span class="badge RISK-ON">RISK-ON</span> Trend and breadth are healthy. Breakouts work best in this regime.<ul><li class="ok">✓ S&amp;P 500 above its 50-day average</li><li class="ok">✓ S&amp;P 500 above its 200-day average</li><li class="ok">✓ 200-day average rising</li><li class="ok">✓ Over half of stocks above their 50-day</li><li class="ok">✓ More 52-week highs than lows</li></ul></div>
+<h2>Long setups (buy candidates)</h2>
+<p class="note">Score 0–100 = trend 30% · momentum/RS 20% · volume 15% · setup trigger 20% · risk 15%,
+adjusted for market regime. A+ also needs a real setup, RS 80+ and 7 of 8 trend rules.
+Stop = where the trend counts as broken. Shares sized so hitting the stop loses your chosen
+risk per trade.</p>
+<div class="wrap"><table class="sortable"><thead><tr><th>Ticker</th><th>Grade</th><th>Score</th><th>Setups</th><th>Close</th><th>Day %</th><th>RS</th><th>RSI</th><th>ADX</th><th>Trend 8</th><th>Stage</th><th>Ext ATR</th><th>RVol</th><th>Stop</th><th>Risk %</th><th>Target 2R</th><th>Shares</th><th>Pos $</th><th>Fees $</th><th>Max loss $</th><th>Net R:R</th><th>Earnings</th></tr></thead><tbody><tr><td>CLF</td><td class="gA">A</td><td>89.3</td><td>Base breakout; Gap up holding; candle: hammer</td><td>13.78</td><td class="dn">-2.27</td><td>83</td><td>63</td><td>20.3</td><td>6</td><td>2</td><td>2.1</td><td>1.03</td><td>12.55</td><td>8.9</td><td>16.25</td><td>14.596</td><td>201.13</td><td>2</td><td>20</td><td>1.7</td><td></td></tr><tr><td>MTCH</td><td class="gA">A</td><td>88.8</td><td>Breakout, volume unconfirmed; Supertrend flip up</td><td>46.2</td><td class="up">3.29</td><td>87</td><td>71.4</td><td>23.2</td><td>8</td><td>2</td><td>3.7</td><td>0.53</td><td>43.56</td><td>5.7</td><td>51.47</td><td>6.831</td><td>315.59</td><td>2</td><td>20</td><td>1.7</td><td></td></tr><tr><td>KO</td><td class="gA">A</td><td>78.6</td><td>Supertrend flip up</td><td>93.25</td><td class="dn">-0.18</td><td>77</td><td>70.5</td><td>25.1</td><td>8</td><td>2</td><td>3.2</td><td>0.5</td><td>90.37</td><td>3.1</td><td>99</td><td>6.259</td><td>583.65</td><td>2</td><td>20</td><td>1.7</td><td></td></tr></tbody></table></div>
+<h2>Watchlist: set a price alert</h2>
+<p class="note">Strong trend and momentum, sitting just under a breakout level. Alert at the pivot,
+then re-check volume when it triggers.</p>
+<p class="empty">Nothing close to a breakout.</p>
+<h2>Short / put candidates</h2>
+<p class="note">Weak trend, weak relative strength, breaking down. For puts or bear spreads, not
+for buying.</p>
+<p class="empty">No breakdowns today.</p>
+<h2>Backtest of these rules</h2><p class='note'>Baseline: an average stock-day returned 4.42% over the next 20 days. Win rate &lt;50% can still make money if average wins beat average losses.</p><div class="wrap"><table class="sortable"><thead><tr><th>group</th><th>trades</th><th>win rate %</th><th>avg R</th><th>avg win R</th><th>avg loss R</th><th>avg trade %</th><th>avg fwd20 %</th><th>bench fwd20 %</th></tr></thead><tbody><tr><td>ALL</td><td>35</td><td>54.3</td><td>0.47</td><td>1.75</td><td>-1.04</td><td>4.35</td><td>8.43</td><td>0.25</td></tr><tr><td>score 70-80</td><td>23</td><td>52.2</td><td>0.46</td><td>1.83</td><td>-1.03</td><td>3.94</td><td>7.53</td><td>0.38</td></tr><tr><td>score 80+</td><td>12</td><td>58.3</td><td>0.5</td><td>1.63</td><td>-1.07</td><td>5.12</td><td>10.43</td><td>0.02</td></tr><tr><td>setup: breakout_recent</td><td>5</td><td>40</td><td>-0.44</td><td>0.45</td><td>-1.03</td><td>-3.97</td><td>-2.94</td><td>0.49</td></tr><tr><td>setup: breakout_unconfirmed</td><td>1</td><td>0</td><td>-1.03</td><td>0</td><td>-1.03</td><td>-6.46</td><td>-8.8</td><td>2.34</td></tr><tr><td>setup: fresh_flip</td><td>4</td><td>50</td><td>0.08</td><td>0.76</td><td>-0.6</td><td>0.38</td><td>0.77</td><td>0.47</td></tr><tr><td>setup: gap_recent</td><td>5</td><td>60</td><td>0.66</td><td>1.82</td><td>-1.08</td><td>6.17</td><td>9.46</td><td>0.33</td></tr><tr><td>setup: pocket_pivot</td><td>11</td><td>63.6</td><td>0.63</td><td>1.61</td><td>-1.08</td><td>5.15</td><td>9.52</td><td>-0.12</td></tr><tr><td>setup: pullback</td><td>8</td><td>62.5</td><td>1.29</td><td>2.84</td><td>-1.29</td><td>11.77</td><td>27.98</td><td>0.29</td></tr><tr><td>setup: vcp</td><td>1</td><td>0</td><td>-1.04</td><td>0</td><td>-1.04</td><td>-4.68</td><td>1.67</td><td>-0.46</td></tr><tr><td>regime: MIXED</td><td>10</td><td>40</td><td>0.47</td><td>2.49</td><td>-0.88</td><td>5.46</td><td>9.45</td><td>0.04</td></tr><tr><td>regime: RISK-OFF</td><td>1</td><td>100</td><td>0.78</td><td>0.78</td><td>0</td><td>3.17</td><td>3.82</td><td>3.38</td></tr><tr><td>regime: RISK-ON</td><td>24</td><td>58.3</td><td>0.46</td><td>1.61</td><td>-1.14</td><td>3.93</td><td>8.13</td><td>0.21</td></tr></tbody></table></div>
+<h2>How to read this</h2>
+<p class="note"><b>RS</b> relative strength 1–99: rank vs every stock scanned (vs the S&amp;P 500 when
+fewer than 100 are scanned) ·
+<b>Trend 8</b> how many of Minervini's 8 trend-template rules pass ·
+<b>Stage</b> Weinstein stage (2 = advancing, 4 = declining) ·
+<b>Ext ATR</b> distance above the 50-day average in ATRs (above ~4 = stretched) ·
+<b>RVol</b> today's volume vs 50-day average ·
+<b>Max loss $</b> what you lose at the stop, commissions included ·
+<b>Net R:R</b> what the 2R target pays after commissions (1.0 = gain equals the loss) · Not financial advice.</p>
+<script>
+document.querySelectorAll('table.sortable th').forEach((th,i)=>th.addEventListener('click',()=>{
+const tb=th.closest('table').tBodies[0];const asc=th.dataset.asc!=='1';th.dataset.asc=asc?'1':'0';
+const val=t=>{const x=parseFloat(t.replace(/[,%$]/g,''));return isNaN(x)?t:x};
+[...tb.rows].sort((a,b)=>{const A=val(a.cells[i].innerText),B=val(b.cells[i].innerText);
+return (A>B?1:A<B?-1:0)*(asc?1:-1)}).forEach(r=>tb.appendChild(r))}));
+</script></body></html>

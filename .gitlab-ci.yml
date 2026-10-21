@@ -1,0 +1,42 @@
+# GitLab alternative to .github/workflows/scan.yml: tests on push, scan on a schedule.
+#
+# One-time setup (keep the project private):
+#   Build > Pipeline schedules > New schedule
+#     Interval pattern: 30 22 * * 1-5    Cron timezone: Dublin    Target branch: main
+#   Settings > CI/CD > Variables: SCANNER_ACCOUNT (e.g. 500), and optionally
+#     SCANNER_CCY_PER_USD, SCANNER_RISK, SCANNER_FEES, SCANNER_UNIVERSE
+# Each evening: Build > Pipelines > latest > "scan" job > Artifacts > Browse > reports/
+
+image: python:3.12-slim
+
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+
+cache:
+  key: pip-$CI_COMMIT_REF_SLUG
+  paths: [.cache/pip]
+
+stages: [test, scan]
+
+test:
+  stage: test
+  script:
+    - pip install -r requirements.txt
+    - python -m pytest -q
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "push"
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+
+scan:
+  stage: scan
+  timeout: 45m
+  script:
+    - pip install -r requirements.txt
+    - python -m smart_scanner scan --with-backtest --out reports
+  artifacts:
+    when: always
+    expire_in: 30 days
+    paths: [reports/]
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+    - if: $CI_PIPELINE_SOURCE == "web"
