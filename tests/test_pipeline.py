@@ -150,3 +150,20 @@ def test_loads_ibkr_price_history_shape(tmp_path):
     p.write_text(__import__("json").dumps({"mtch": bars}))
     df = load(f"json:{p}")["MTCH"]
     assert str(df.index[-1].date()) == "2026-10-20" and df["close"].iloc[-1] == 2.5
+
+
+def test_takeover_pinned_stock_is_skipped(universe, cfg):
+    """After a deal is announced the price parks near the offer: a 'perfect tight base'
+    that pattern rules love. It must be filtered out, not offered as a VCP."""
+    df = universe["BRK"].copy()
+    deal = df["close"].iloc[-60] * 1.3
+    tail = np.full(59, deal) * (1 + 0.0005 * np.sin(np.arange(59)))
+    df.iloc[-59:, df.columns.get_loc("close")] = tail
+    df.iloc[-59:, df.columns.get_loc("open")] = tail
+    df.iloc[-59:, df.columns.get_loc("high")] = tail * 1.001
+    df.iloc[-59:, df.columns.get_loc("low")] = tail * 0.999
+    data = {**universe, "TKO": df}
+    res = run_scan(data, cfg)
+    assert res.feats["TKO"]["pinned"].iloc[-1]
+    assert "takeover" in res.skipped["TKO"]
+    assert all("TKO" not in set(d["ticker"]) for d in (res.longs, res.watch, res.shorts) if not d.empty)

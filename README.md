@@ -16,7 +16,7 @@ It finds candidates. It never places trades. Not financial advice.
 | Folder | What's in it |
 |---|---|
 | `smart_scanner/` | The scanner (Python package) |
-| `tests/` | 36 automated tests |
+| `tests/` | 37 automated tests |
 | `scans/` | Nightly reports, written by the GitHub Action (`latest.md`, plus one folder per day) |
 | `examples/` | A sample report (13 stocks, 20 Oct 2026) |
 | `docs/` | Notes: the options spread system and the first trend-start scanner |
@@ -109,7 +109,7 @@ Prefer GitLab? `.gitlab-ci.yml` does the same there (artifacts instead of commit
 ```bash
 python -m venv .venv && source .venv/bin/activate        # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
-python -m pytest -q                                       # 36 tests, ~30 s
+python -m pytest -q                                       # 37 tests, ~30 s
 python -m smart_scanner scan --universe sp1500 --account 500 --with-backtest
 ```
 

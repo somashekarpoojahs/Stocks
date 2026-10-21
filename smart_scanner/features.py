@@ -19,6 +19,11 @@ def compute_features(df: pd.DataFrame, cfg) -> pd.DataFrame:
     f["macd"], f["macd_signal"], f["macd_hist"] = I.macd(c)
     f["atr"] = I.atr(df, 14)
     f["atr_pct"] = f["atr"] / c
+    # Pinned: daily range collapsed to a sliver of the stock's own normal, the signature of
+    # an agreed takeover (price parks just under the deal price). Looks like a perfect "tight
+    # base" to pattern rules, so it must be filtered out explicitly.
+    f["pinned"] = (f["atr_pct"] < 0.012) & \
+        (f["atr_pct"] < 0.35 * f["atr_pct"].rolling(252, min_periods=120).median())
     f["adx"], f["pdi"], f["mdi"] = I.adx(df, 14)
 
     f["st_line"], f["st_dir"] = I.supertrend(df, cfg.supertrend_period, cfg.supertrend_mult)

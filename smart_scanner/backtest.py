@@ -48,7 +48,7 @@ def backtest(data: dict, cfg, side: str = "long", threshold: float = 70.0,
         o, h, l, c = (f[k].to_numpy() for k in ("open", "high", "low", "close"))
         has_trig = pd.concat([f[k].fillna(False).astype(bool) for k in triggers], axis=1).any(axis=1)
         liquid = (f["close"] >= cfg.min_price) & (f["dollar_vol50"].fillna(np.inf) >= cfg.min_dollar_volume)
-        sig = ((f[score_col] >= threshold) & has_trig & liquid).to_numpy()
+        sig = ((f[score_col] >= threshold) & has_trig & liquid & ~f["pinned"].fillna(False).astype(bool)).to_numpy()
 
         fwd20 = f["close"].shift(-20) / f["close"] - 1
         base_rets.extend(fwd20.iloc[start:][liquid.iloc[start:]].dropna().tolist())

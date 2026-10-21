@@ -82,6 +82,9 @@ def run_scan(data: dict, cfg, earnings: dict | None = None) -> ScanResult:
         if not liquid:
             skipped[t] = "price/liquidity filter"
             continue
+        if bool(row.get("pinned", False)):
+            skipped[t] = "pinned near a fixed price (likely takeover)"
+            continue
         base = {
             "ticker": t, "close": round(row["close"], 2), "day_pct": round(100 * row["day_chg"], 2),
             "rs_rating": row["rs_rating"], "rsi": round(row["rsi"], 1), "adx": round(row["adx"], 1),

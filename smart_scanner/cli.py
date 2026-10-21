@@ -31,7 +31,9 @@ def attach_earnings(res, dates: dict, today=None):
             if not d:
                 return ""
             days = (d - today).days
-            return f"{d} (in {days}d) ⚠" if 0 <= days <= 7 else str(d)
+            if days < 0:                       # Yahoo returned the last report, not the next one
+                return f"reported {d}" if days >= -14 else ""
+            return f"{d} (in {days}d) ⚠" if days <= 7 else str(d)
         df["earnings"] = df["ticker"].map(label)
 
 
@@ -115,6 +117,13 @@ def main(argv=None):
             if any(not d.empty for d in (res.longs, res.watch, res.shorts)) else []
         attach_earnings(res, yahoo_earnings_dates(list(top)))
     bt_res = backtest(data, cfg) if a.with_backtest else None
+    if bt_res is not None and not bt_res.summary.empty:
+        allr = float(bt_res.summary.loc["ALL", "avg_R"])
+        n = int(bt_res.summary.loc["ALL", "trades"])
+        if allr < 0.10:
+            res.warnings.append(
+                f"Backtest: over {n:,} past signals these rules averaged {allr:+.2f}R per trade, "
+                f"about break-even after costs. Treat today's picks as ideas to research, not proven buys.")
     paths = save_report(res, a.out, bt_res, f"· universe {a.universe}")
     print(f"Regime: {res.regime_label.iloc[-1]} | longs {len(res.longs)} | watch {len(res.watch)} "
           f"| shorts {len(res.shorts)}")
