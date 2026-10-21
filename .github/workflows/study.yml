@@ -1,5 +1,7 @@
-# Exit study: compares ways of exiting the scanner's own signals on years of data and
-# saves the write-up into research/. Run it from Actions > exit-study > Run workflow.
+# Exit study: compares ways of exiting on years of data and saves the write-up into
+# research/. Run it from Actions > exit-study > Run workflow. "entry" picks the buy rule:
+# score (the scanner's signals), restart (Supertrend 7,3 trend restarts), st7_flip (every
+# Supertrend 7,3 flip up), or several separated by commas.
 name: exit-study
 
 on:
@@ -14,6 +16,9 @@ on:
       threshold:
         description: "Minimum score for a signal"
         default: "70"
+      entry:
+        description: "Entry rule(s): score, restart, st7_flip (comma-separated)"
+        default: "score"
 
 permissions:
   contents: write
@@ -30,6 +35,7 @@ jobs:
       PERIOD: ${{ inputs.period }}
       UNIVERSE: ${{ inputs.universe }}
       THRESHOLD: ${{ inputs.threshold }}
+      ENTRY: ${{ inputs.entry }}
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-python@v7
@@ -39,13 +45,13 @@ jobs:
       - name: Install
         run: pip install -r requirements.txt
       - name: Run the study
-        run: python -m smart_scanner study --universe "$UNIVERSE" --period "$PERIOD" --threshold "$THRESHOLD" --out research
+        run: python -m smart_scanner study --universe "$UNIVERSE" --period "$PERIOD" --threshold "$THRESHOLD" --entry "$ENTRY" --out research
       - name: Save results into research/
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add research
           if git diff --cached --quiet; then echo "No changes to save"; exit 0; fi
-          git commit -m "Exit study $(date -u +%F) ($PERIOD, $UNIVERSE)"
+          git commit -m "Study $(date -u +%F): $ENTRY ($PERIOD, $UNIVERSE)"
           git pull --rebase origin "$GITHUB_REF_NAME"
           git push origin "HEAD:$GITHUB_REF_NAME"

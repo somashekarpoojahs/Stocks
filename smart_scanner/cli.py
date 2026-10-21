@@ -3,6 +3,7 @@
     python -m smart_scanner backtest --universe sp500 --threshold 70
     python -m smart_scanner scan --source json:my_ibkr_bars.json --universe all
     python -m smart_scanner study --universe sp1500 --period 5y      # compare exit rules
+    python -m smart_scanner study --entry restart,st7_flip           # test the trend-restart rule
 
 Personal settings can live in environment variables instead of flags (handy for CI):
 SCANNER_ACCOUNT, SCANNER_CCY_PER_USD, SCANNER_RISK, SCANNER_FEES, SCANNER_UNIVERSE.
@@ -15,7 +16,7 @@ import pandas as pd
 
 from .backtest import backtest
 from .config import FEE_PLANS, Config
-from .data import load, yahoo_earnings_dates
+from .data import drop_unfinished_bar, load, yahoo_earnings_dates
 from .pipeline import run_scan
 from .report import save_report
 from .universe import get_universe
@@ -23,8 +24,8 @@ from .universe import get_universe
 
 def attach_earnings(res, dates: dict, today=None):
     today = today or dt.date.today()
-    for name in ("longs", "shorts", "watch"):
-        df = getattr(res, name)
+    for name in ("longs", "shorts", "watch", "restarts", "restart_watch"):
+        df = getattr(res, name, None)
         if df is None or df.empty:
             continue
         def label(t):
@@ -85,6 +86,8 @@ def main(argv=None):
     bt.add_argument("--last-n-bars", type=int, default=None)
     st = sub.choices["study"]
     st.add_argument("--threshold", type=float, default=70.0)
+    st.add_argument("--entry", default="score",
+                    help="entry rule(s), comma-separated: score | restart | st7_flip")
     st.set_defaults(period="5y", out="research")
     a = p.parse_args(argv)
     if a.fees not in FEE_PLANS:
@@ -98,6 +101,9 @@ def main(argv=None):
     else:
         tickers = None
     data = load(a.source, tickers, a.period, refresh=a.refresh)
+    data, dropped = drop_unfinished_bar(data)
+    if dropped:
+        print(f"Dropped the unfinished bar of {dropped}: the US market hasn't closed yet.")
     if a.source != "yahoo" and a.universe not in ("all", "sp1500"):
         keep = set(get_universe(a.universe)) | {cfg.benchmark}
         data = {t: d for t, d in data.items() if t in keep}
@@ -105,17 +111,27 @@ def main(argv=None):
     if a.cmd == "study":
         from pathlib import Path
 
-        from .study import build_markdown, run_study
-        res = run_study(data, cfg, threshold=a.threshold)
+        from .pipeline import score_universe
+        from .study import ENTRIES, build_markdown, run_study
+        entries = [e.strip() for e in a.entry.split(",") if e.strip()]
+        bad = [e for e in entries if e not in ENTRIES]
+        if bad:
+            p.error(f"--entry: unknown rule(s) {bad}; use {sorted(ENTRIES)}")
+        feats = score_universe(data, cfg)[0]
         out = Path(a.out)
         out.mkdir(parents=True, exist_ok=True)
         stamp = pd.Timestamp.today().date()
-        md = out / f"exit_study_{stamp}.md"
-        md.write_text(build_markdown(res, a.universe), encoding="utf-8")
-        res.summary.to_csv(out / f"exit_study_{stamp}_summary.csv")
         pd.set_option("display.width", 220)
-        print(res.summary.round(3).to_string())
-        print("Report:", md)
+        res = None
+        for e in entries:
+            res = run_study(None, cfg, threshold=a.threshold, entry=e, feats=feats)
+            prefix = ENTRIES[e][2]
+            md = out / f"{prefix}_{stamp}.md"
+            md.write_text(build_markdown(res, a.universe), encoding="utf-8")
+            res.summary.to_csv(out / f"{prefix}_{stamp}_summary.csv")
+            print(f"\n== {e}")
+            print(res.summary.round(3).to_string())
+            print("Report:", md)
         return res
 
     if a.cmd == "backtest":
@@ -132,10 +148,14 @@ def main(argv=None):
     age = (dt.date.today() - newest).days
     if age > 4:
         res.warnings.append(f"Newest bar is {age} days old ({newest}). Refresh the data first.")
+    if dropped:
+        res.warnings.append(f"Today's unfinished bar ({dropped}) was left out: the scan uses the last "
+                            f"complete day.")
     if a.source == "yahoo" and not a.no_earnings:
-        top = pd.concat([d["ticker"] for d in (res.longs, res.watch, res.shorts) if not d.empty]) \
-            if any(not d.empty for d in (res.longs, res.watch, res.shorts)) else []
-        attach_earnings(res, yahoo_earnings_dates(list(top)))
+        tables = [d for d in (res.longs, res.watch, res.shorts, res.restarts, res.restart_watch)
+                  if d is not None and not d.empty]
+        top = sorted(set(pd.concat([d["ticker"] for d in tables]))) if tables else []
+        attach_earnings(res, yahoo_earnings_dates(top))
     bt_res = backtest(data, cfg) if a.with_backtest else None
     if bt_res is not None and not bt_res.summary.empty:
         allr = float(bt_res.summary.loc["ALL", "avg_R"])
@@ -146,12 +166,16 @@ def main(argv=None):
                 f"about break-even after costs. Treat today's picks as ideas to research, not proven buys.")
     paths = save_report(res, a.out, bt_res, f"· universe {a.universe}")
     print(f"Regime: {res.regime_label.iloc[-1]} | longs {len(res.longs)} | watch {len(res.watch)} "
-          f"| shorts {len(res.shorts)}")
+          f"| shorts {len(res.shorts)} | restarts {len(res.restarts)} | near a restart "
+          f"{len(res.restart_watch)}")
     for w in res.warnings:
         print("WARNING:", w)
     if not res.longs.empty:
         print(res.longs[["ticker", "grade", "score", "setups", "close", "stop", "target_2r"]]
               .to_string(index=False))
+    if not res.restarts.empty:
+        print(res.restarts[["ticker", "flip_day", "close", "rs_rating", "rsi", "pullback_pct", "stop",
+                            "stop_pct"]].to_string(index=False))
     print("Report:", paths["html"])
     return res
 

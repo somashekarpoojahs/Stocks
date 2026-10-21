@@ -1,5 +1,6 @@
-# Daily scan: Monday-Friday morning, before the US market opens. Scans the previous day's
-# complete bars and saves the report into scans/ in this repo.
+# Daily scan: every US trading evening after the close, plus a morning re-run as a backup
+# (GitHub sometimes starts scheduled jobs hours late). It scans the last complete day: a
+# bar that is still forming is left out. The report is saved into scans/ in this repo.
 #
 # Your own numbers come from repository variables
 # (Settings > Secrets and variables > Actions > Variables):
@@ -9,8 +10,8 @@ name: daily-scan
 
 on:
   schedule:
-    - cron: "30 11 * * 1-5"   # 11:30 UTC = 12:30 Irish summer time / 11:30 winter.
-                              # The US opens at 13:30 UTC (summer) or 14:30 UTC (winter).
+    - cron: "40 21 * * 1-5"   # 21:40 UTC Mon-Fri, after the US close (20:00 UTC summer, 21:00 winter)
+    - cron: "0 7 * * 2-6"     # 07:00 UTC Tue-Sat backup, well before the US open (13:30/14:30 UTC)
   workflow_dispatch:          # "Run workflow" button
 
 permissions:
@@ -54,7 +55,7 @@ jobs:
           cp reports/*"$day"* "scans/$day/"
           cp "reports/scan_$day.md" scans/latest.md
           cp "reports/scan_$day.html" scans/latest.html
-          for f in longs watch shorts; do
+          for f in longs watch shorts restarts restart_watch; do
             if [ -f "reports/${f}_$day.csv" ]; then cp "reports/${f}_$day.csv" "scans/latest_$f.csv"
             else rm -f "scans/latest_$f.csv"; fi
           done

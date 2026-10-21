@@ -2,12 +2,14 @@
 
 A whole-market swing-trading scanner for US stocks, plus notes and tools from building it.
 
-Every weekday morning, before the US market opens, a GitHub Action scores about 1,500 stocks on ~30 indicators plus chart and
-candlestick patterns. It checks the market's mood and saves a report to [`scans/latest.md`](scans/latest.md)
-(it opens nicely in the GitHub phone app). The report has:
+Every US trading evening after the close, a GitHub Action scores about 1,500 stocks on ~30 indicators plus chart and
+candlestick patterns (a morning re-run is the backup). It checks the market's mood and saves a report to
+[`scans/latest.md`](scans/latest.md) (it opens nicely in the GitHub phone app). The report has:
 
 - ranked buy candidates,
 - a watchlist of stocks just under a breakout,
+- **trend restarts**: strong stocks whose Supertrend (7, 3) just flipped back up after a pullback, and
+  stocks close to that flip,
 - put/short candidates,
 - a complete trade plan for each: entry, stop, targets, share count, commissions and real reward-to-risk.
 
@@ -16,7 +18,7 @@ It finds candidates. It never places trades. Not financial advice.
 | Folder | What's in it |
 |---|---|
 | `smart_scanner/` | The scanner (Python package) |
-| `tests/` | 43 automated tests |
+| `tests/` | 53 automated tests |
 | `scans/` | Daily reports, written by the GitHub Action (`latest.md`, plus one folder per day) |
 | `research/` | Exit studies: which way of selling works best, on years of data |
 | `trades/` | Trade journal: every order Claude prepares and its result (in R) |
@@ -73,6 +75,21 @@ One lucky indicator can't produce an A+.
 - **Short/put side:** breakdown below a base on volume, failed breakout, Supertrend flip down.
 - **Candles** (confirmation only): engulfing, hammer, shooting star, morning/evening star, three white soldiers, doji, inside bar, NR7, marubozu.
 
+**Trend restarts (separate list, not part of the score).** The "buy arrow after a correction" that
+charting apps draw with a Supertrend (7, 3), as on QQQ and MU on 8 April 2026. All of these must hold:
+
+- **Long-term uptrend:** the 200-day average is rising and the price is within 25% of its 52-week high.
+- **A real pullback:** the 20-day low is at least 8% under the 60-day high, and RSI (14) dipped to 40 or lower
+  in the last 15 days.
+- **The turn:** the Supertrend (7, 3) flips back up (listed for 3 days), MACD (12, 26, 9) is above its signal
+  line, RSI is back over 50, and the price is above the 200-day.
+
+- **Stop:** the Supertrend (7, 3) line under the price, at most 15% below. Size so that a stop-out loses your
+  risk per trade.
+- **Exit:** move the stop up to the line as it rises; the trend ends when a daily close falls below it.
+- **"Close to a trend restart":** the same pullback while the Supertrend still points down. A daily close above the
+  listed level flips it. That level can only fall while the trend is down, so re-check it each evening.
+
 **4. Trade plan.**
 
 - **Stop:** the tightest sensible of 2×ATR, the Supertrend line, or just under the breakout level. It is never placed inside today's price range and is capped at 10%.
@@ -83,13 +100,13 @@ Each plan is sized on its own. Don't hold more than 2–3 positions at once.
 
 ## Daily scan on GitHub (already set up)
 
-The workflow `.github/workflows/scan.yml` runs Monday–Friday at 11:30 UTC (12:30 Irish time in summer, 11:30
-in winter), before the US open. It scans the previous day's complete bars, so the picks are ready before
-the bell. GitHub sometimes starts scheduled runs a few minutes late. You can also run it any time:
-**Actions → daily-scan → Run workflow**. Each run saves:
+The workflow `.github/workflows/scan.yml` runs at 21:40 UTC Monday–Friday, after the US close, and again at
+07:00 UTC Tuesday–Saturday as a backup. GitHub sometimes starts scheduled runs late (once by 4½ hours, into
+the trading session), so the scanner always leaves out a daily bar that is still forming and scans the last
+complete day. You can also run it any time: **Actions → daily-scan → Run workflow**. Each run saves:
 
 - `scans/latest.md` and `scans/latest.html`,
-- `scans/latest_longs.csv` / `_watch` / `_shorts`,
+- `scans/latest_longs.csv` / `_watch` / `_shorts` / `_restarts` / `_restart_watch`,
 - a dated folder `scans/YYYY-MM-DD/`.
 
 **Set your own numbers once.** Go to **Settings → Secrets and variables → Actions → Variables → New
@@ -114,14 +131,14 @@ Prefer GitLab? `.gitlab-ci.yml` does the same there (artifacts instead of commit
 ```bash
 python -m venv .venv && source .venv/bin/activate        # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
-python -m pytest -q                                       # 43 tests, ~30 s
+python -m pytest -q                                       # 53 tests, ~40 s
 python -m smart_scanner scan --universe sp1500 --account 500 --with-backtest
 ```
 
 Then open `reports/scan_YYYY-MM-DD.html` (or the `.md`).
 
-- Run it **between the US close (21:00 Irish time) and the next open (14:30)**. During the session it would
-  see an unfinished day, and the report says so.
+- Run it any time. During the US session (and until 16:30 New York time) it leaves out today's unfinished
+  bar and scans the previous day; the report says so.
 - The first run of the day downloads ~1,500 tickers (5–10 minutes). Later runs that day use the cache; add `--refresh` to re-download.
 - Instead of flags, you can set `SCANNER_ACCOUNT`, `SCANNER_CCY_PER_USD`, `SCANNER_RISK`, `SCANNER_FEES` and `SCANNER_UNIVERSE` in your shell.
 
@@ -192,6 +209,9 @@ takes the same entries and compares eight ways of selling:
 Each is set against random stocks bought on the same days, so you can see whether the stock picking
 itself adds anything. Results go to `research/`.
 
+`--entry restart,st7_flip` (or the workflow's **entry** box) tests the trend-restart rule and, for
+comparison, every Supertrend (7, 3) flip up with no filter, against the Supertrend exits.
+
 ## Honest limits
 
 - **So far the picks haven't beaten random stocks.** The exit study
@@ -219,7 +239,8 @@ itself adds anything. Results go to `research/`.
 smart_scanner/
   config.py      every tunable number (filters, setups, sizing, fees)
   indicators.py  SMA/EMA, Wilder RSI/ATR/ADX, MACD, Supertrend, Bollinger, Keltner, OBV, CMF, RVOL, RS
-  patterns.py    candles, base breakout, VCP, pocket pivot, gaps, pullbacks, squeeze, trend template, stages
+  patterns.py    candles, base breakout, VCP, pocket pivot, gaps, pullbacks, squeeze, trend restarts,
+                 trend template, stages
   features.py    builds all of the above per stock (strictly causal: no look-ahead, tested)
   scoring.py     RS rating, breadth, regime, the five score parts, grades
   risk.py        stops, targets, commission-aware position sizing
@@ -228,7 +249,8 @@ smart_scanner/
   report.py      HTML, Markdown and CSV reports
   data.py        Yahoo (cached, retried), JSON (incl. IBKR price history as-is), CSV folders
   universe.py    S&P 500 (GitHub datasets), S&P 400/600 and Nasdaq-100 (Wikipedia)
-  cli.py         python -m smart_scanner scan | backtest
+  cli.py         python -m smart_scanner scan | backtest | study
+  study.py       exit study: entry rules × exit rules, against random stocks bought the same day
 ```
 
 Commission figures are from IBKR's

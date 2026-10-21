@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 
 from .features import compute_features
-from .risk import trade_plan
+from .risk import restart_plan, trade_plan
 from .scoring import (RS_FULL_RANK_AT, active_setups, breadth, grade, long_components, regime,
                       rs_rating, short_components, total)
 
@@ -22,6 +22,8 @@ class ScanResult:
     watch: pd.DataFrame
     skipped: dict = field(default_factory=dict)
     warnings: list = field(default_factory=list)
+    restarts: pd.DataFrame = field(default_factory=pd.DataFrame)       # Supertrend (7, 3) restarts
+    restart_watch: pd.DataFrame = field(default_factory=pd.DataFrame)  # still correcting, close to one
 
     @property
     def asof(self):
@@ -74,7 +76,7 @@ def score_universe(data: dict, cfg):
 def run_scan(data: dict, cfg, earnings: dict | None = None) -> ScanResult:
     feats, bench_f, checks, rscore, rlabel, skipped = score_universe(data, cfg)
     earnings = earnings or {}
-    longs, shorts, watch = [], [], []
+    longs, shorts, watch, restarts, restart_watch = [], [], [], [], []
     for t, f in feats.items():
         row = f.iloc[-1]
         liquid = row["close"] >= cfg.min_price and (
@@ -109,6 +111,24 @@ def run_scan(data: dict, cfg, earnings: dict | None = None) -> ScanResult:
                 and row["L_momentum"] >= 0.6):
             watch.append({**base, "score": round(ls, 1), "alert_at": round(row["pivot"], 2),
                           "pct_to_pivot": round(100 * (row["pivot"] / row["close"] - 1), 1)})
+        pull = round(100 * row["pullback_pct"], 1)
+        if bool(row.get("restart", False)):
+            flip_day = f.index[-1 - int(row["st7_bars_since_up"])]
+            restarts.append({**base, "flip_day": str(pd.Timestamp(flip_day).date()),
+                             "pullback_pct": pull, "line": round(row["st7_line"], 2),
+                             **restart_plan(row, cfg)})
+        elif bool(row.get("restart_forming", False)):
+            dist = row["st7_line"] / row["close"] - 1
+            if 0 < dist <= cfg.restart_watch_pct:
+                restart_watch.append({**base, "alert_at": round(row["st7_line"], 2),
+                                      "pct_to_flip": round(100 * dist, 1), "pullback_pct": pull})
+
+    def by_rs(rows):
+        if not rows:
+            return pd.DataFrame()
+        df = pd.DataFrame(rows).sort_values("rs_rating", ascending=False)
+        return df.head(cfg.top_n).reset_index(drop=True)
+
     def cols_sort(rows):
         if not rows:
             return pd.DataFrame()
@@ -130,7 +150,8 @@ def run_scan(data: dict, cfg, earnings: dict | None = None) -> ScanResult:
                          f"'2R' target really pays about {plans['net_rr'].median():.1f}R (see Net R:R). Sizes "
                          f"already allow for fees; tight-stop trades suffer most, so favour fewer, wider setups.")
     return ScanResult(feats, bench_f, checks, rscore, rlabel,
-                      longs_df, shorts_df, cols_sort(watch), skipped, warns)
+                      longs_df, shorts_df, cols_sort(watch), skipped, warns,
+                      restarts=by_rs(restarts), restart_watch=by_rs(restart_watch))
 
 
 def data_warnings(feats: dict, cfg, skipped: dict | None = None) -> list:

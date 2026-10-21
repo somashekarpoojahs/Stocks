@@ -56,6 +56,15 @@ def breakdown_stock(n_up=200, n_down=60):
     return df
 
 
+def restart_stock(n_up=260, rally=(87.5, 90.0, 92.5, 94.5, 96.0)):
+    """Long uptrend 50 -> 100, a 14% pullback over 12 bars (RSI well under 40), then a
+    sharp rally that flips the Supertrend (7, 3) back up on the 4th rally bar."""
+    wiggle = 1 + 0.01 * np.sin(np.arange(n_up) * 0.9)
+    up = np.linspace(50, 100, n_up) * wiggle
+    down = np.linspace(up[-1], 86, 13)[1:]
+    return make_bars(np.r_[up, down, list(rally)])
+
+
 @pytest.fixture
 def cfg():
     return Config()

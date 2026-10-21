@@ -10,6 +10,7 @@ def path(closes, st_dir=1, atr=1.0):
     n = len(c)
     return {"open": c[:], "high": [x * 1.001 for x in c], "low": [x * 0.999 for x in c], "close": c,
             "atr": [atr] * n, "st_line": [x - 3 for x in c], "st_dir": [float(st_dir)] * n,
+            "st7_line": [x - 2 for x in c], "st7_dir": [float(st_dir)] * n,
             "ema21": [x - 2 for x in c], "sma50": [x - 4 for x in c]}
 
 
@@ -53,3 +54,38 @@ def test_study_end_to_end(universe, cfg):
     assert set(res.trades["kind"]) <= {"signal", "random"}
     md = build_markdown(res, "test")
     assert "## Verdict" in md and "Best exit" in md
+
+
+def test_supertrend7_exit_sells_the_open_after_the_flip_down():
+    px = path(np.linspace(100, 110, 30))
+    px["st7_dir"][10:] = [-1.0] * 20                      # turns down at the close of bar 10
+    R, bars, why = simulate(px, 1, px["open"][1], 5.0, Exit("st7", max_hold=60, trail="supertrend7"), cost=0)
+    assert why == "trail" and bars == 11
+    assert R == pytest.approx((px["open"][11] - px["open"][1]) / 5.0)
+
+
+@pytest.mark.parametrize("entry", ["restart", "st7_flip"])
+def test_study_supertrend_entries(universe, cfg, entry):
+    res = run_study(universe, cfg, entry=entry)
+    assert res.entry == entry
+    md = build_markdown(res, "test")
+    if entry == "st7_flip":                                # random walks flip all the time
+        assert "Trail Supertrend (7, 3), 120 days" in res.summary.index
+        assert (res.trades.loc[res.trades["kind"] == "signal", "setup"] == "st7_flip").all()
+        assert "chart's own exit" in md and "relative strength" in md
+
+
+def test_study_rejects_unknown_entry(universe, cfg):
+    with pytest.raises(ValueError):
+        run_study(universe, cfg, entry="nope")
+
+
+def test_close_below_supertrend7_ignores_intraday_pokes():
+    """The chart's sell arrow needs a daily close below the line; a stop order at the
+    line sells on the first intraday touch."""
+    px = path([100] * 30)
+    px["low"][5] = px["st7_line"][4] - 0.5               # one intraday poke through the line
+    px["st7_dir"][12:] = [-1.0] * 18                      # first close below it: bar 12
+    stop_order = simulate(px, 1, 100.0, 5.0, Exit("a", max_hold=60, trail="supertrend7"), cost=0)
+    on_close = simulate(px, 1, 100.0, 5.0, Exit("b", max_hold=60, trail="supertrend7_close"), cost=0)
+    assert stop_order[1:] == (5, "stop") and on_close[1:] == (13, "trail")

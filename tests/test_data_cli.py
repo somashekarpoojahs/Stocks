@@ -46,3 +46,25 @@ def test_cli_scan_end_to_end(tmp_path, universe, monkeypatch):
     md = (tmp_path / "out" / f"scan_{stamp}.md").read_text(encoding="utf-8")
     assert "BRK" in html and "| BRK |" in md and res.regime_label.iloc[-1] in md
     assert (res.longs["risk_usd"] <= 300 * 0.02 + 1e-9).all()
+
+
+def test_unfinished_bar_dropped_while_the_market_is_open():
+    from smart_scanner.data import drop_unfinished_bar
+    data = {"A": pd.DataFrame({"close": [1.0, 2.0]}, index=pd.to_datetime(["2026-10-20", "2026-10-21"]))}
+    ny = lambda s: pd.Timestamp(s, tz="America/New_York")
+    out, d = drop_unfinished_bar(data, now=pd.Timestamp("2026-10-21 16:00", tz="UTC"))   # 12:00 New York
+    assert d == "2026-10-21" and len(out["A"]) == 1
+    for later in ("2026-10-21 17:00", "2026-10-22 08:00"):                           # bar is complete
+        out, d = drop_unfinished_bar(data, now=ny(later))
+        assert d is None and len(out["A"]) == 2
+
+
+def test_cli_study_supertrend_entries(tmp_path, universe):
+    path = tmp_path / "bars.json"
+    path.write_text(json.dumps({t: {"time": [f"{d.date()}T13:30:00Z" for d in df.index],
+                                    **{k: df[k].round(4).tolist() for k in ("open", "high", "low", "close", "volume")}}
+                                for t, df in universe.items()}))
+    main(["study", "--source", f"json:{path}", "--universe", "all", "--entry", "restart,st7_flip",
+          "--out", str(tmp_path / "r")])
+    names = {f.name.rsplit("_", 1)[0] for f in (tmp_path / "r").glob("*.md")}
+    assert names == {"restart_study", "st7_flip_study"}

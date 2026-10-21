@@ -105,6 +105,20 @@ def setups(df: pd.DataFrame, f: pd.DataFrame, cfg) -> pd.DataFrame:
     # --- fresh Supertrend flip up
     out["fresh_flip"] = (f["st_dir"] == 1) & (f["st_bars_since_up"] <= cfg.fresh_flip_bars)
 
+    # --- trend restart: a stock in a long-term uptrend pulls back for real (RSI dips to 40,
+    # 8%+ off its high), then the fast Supertrend (7, 3) flips back up with MACD above its
+    # signal line and RSI back over 50. The "buy arrow after a correction" on charting apps.
+    rsi_dipped = f["rsi"].rolling(15, min_periods=10).min() <= cfg.restart_rsi_dip
+    pullback = l.rolling(20, min_periods=10).min() / h.rolling(60, min_periods=30).max() - 1
+    long_trend = (f["sma200"] > f["sma200"].shift(21)) & (c >= 0.75 * f["hi52"])
+    context = rsi_dipped & (pullback <= -cfg.restart_min_pullback) & long_trend
+    out["pullback_pct"] = pullback
+    out["restart"] = context & (f["st7_dir"] == 1) & \
+        (f["st7_bars_since_up"] < cfg.restart_fresh_bars) & (c > f["sma200"]) & \
+        (f["macd"] > f["macd_signal"]) & (f["rsi"] >= 50)
+    # still correcting: the fast Supertrend points down; a close above its line is the signal
+    out["restart_forming"] = context & (f["st7_dir"] == -1) & (c >= 0.97 * f["sma200"])
+
     # --- bearish setups (for puts / short side)
     out["breakdown"] = (c < prior_lo) & (f["rvol"] >= cfg.rvol_breakout) & (c < f["sma50"])
     hi50 = h.shift(1).rolling(50, min_periods=30).max()

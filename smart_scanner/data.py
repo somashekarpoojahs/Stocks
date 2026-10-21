@@ -119,3 +119,24 @@ def load(source: str, tickers=None, period: str = "2y", refresh: bool = False) -
     if source.startswith("csvdir:"):
         return load_csv_dir(source[7:])
     raise ValueError(f"Unknown source {source!r}")
+
+
+def drop_unfinished_bar(data: dict, now=None, close_after=(16, 30)) -> tuple[dict, str | None]:
+    """While the US market is open (or shortly after the bell) the newest daily bar is
+    still forming: a scan would read half a day's volume and a provisional close. Drop a
+    bar dated today (New York time) until 16:30 New York time. Returns (data, the dropped
+    date or None). GitHub can start scheduled jobs hours late, so this matters."""
+    now = pd.Timestamp.now(tz="America/New_York") if now is None else pd.Timestamp(now)
+    if now.tzinfo is None:
+        now = now.tz_localize("America/New_York")
+    now = now.tz_convert("America/New_York")
+    if (now.hour, now.minute) >= close_after:
+        return data, None
+    today = now.date()
+    out, dropped = {}, None
+    for t, df in data.items():
+        if len(df) and pd.Timestamp(df.index[-1]).date() == today:
+            df = df.iloc[:-1]
+            dropped = str(today)
+        out[t] = df
+    return out, dropped

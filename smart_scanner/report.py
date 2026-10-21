@@ -21,6 +21,22 @@ LONG_COLS = [("ticker", "Ticker"), ("grade", "Grade"), ("score", "Score"), ("set
 WATCH_COLS = [("ticker", "Ticker"), ("score", "Score"), ("close", "Close"), ("alert_at", "Alert at"),
               ("pct_to_pivot", "% to pivot"), ("rs_rating", "RS"), ("rsi", "RSI"),
               ("trend_template", "Trend 8"), ("earnings", "Earnings")]
+RESTART_COLS = [("ticker", "Ticker"), ("flip_day", "Flipped up"), ("close", "Close"), ("day_pct", "Day %"),
+                ("rs_rating", "RS"), ("rsi", "RSI"), ("pullback_pct", "Pullback %"),
+                ("trend_template", "Trend 8"), ("stop", "Stop"), ("stop_pct", "Risk %"),
+                ("shares", "Shares"), ("position_usd", "Pos $"), ("risk_usd", "Max loss $"),
+                ("earnings", "Earnings")]
+RESTART_WATCH_COLS = [("ticker", "Ticker"), ("close", "Close"), ("alert_at", "Close above"),
+                      ("pct_to_flip", "% to flip"), ("rs_rating", "RS"), ("rsi", "RSI"),
+                      ("pullback_pct", "Pullback %"), ("trend_template", "Trend 8"), ("earnings", "Earnings")]
+RESTART_NOTE = ("A stock in a long-term uptrend (rising 200-day, within 25% of its 52-week high) pulled "
+                "back at least 8% with RSI(14) dipping to 40 or lower, and the fast Supertrend (7, 3) "
+                "just flipped back up with MACD above its signal line and RSI over 50. Stop = the "
+                "Supertrend (7, 3) line (at most 15% below). Exit when the line turns down: a daily "
+                "close below it.")
+RESTART_WATCH_NOTE = ("Same pullback in an uptrend, but the Supertrend (7, 3) still points down. A daily "
+                      "close above the 'Close above' level flips it up. The level can only move lower "
+                      "while the trend is down, so re-check it each evening.")
 
 
 def _cell(k, v):
@@ -115,6 +131,12 @@ risk per trade.</p>
 <p class="note">Strong trend and momentum, sitting just under a breakout level. Alert at the pivot,
 then re-check volume when it triggers.</p>
 {_table(res.watch, WATCH_COLS, "Nothing close to a breakout.")}
+<h2>Trend restarts: Supertrend (7, 3) flipped up after a pullback</h2>
+<p class="note">{html.escape(RESTART_NOTE)}</p>
+{_table(getattr(res, "restarts", None), RESTART_COLS, "No trend restarts today.")}
+<h2>Close to a trend restart</h2>
+<p class="note">{html.escape(RESTART_WATCH_NOTE)}</p>
+{_table(getattr(res, "restart_watch", None), RESTART_WATCH_COLS, "None within 6% of a flip.")}
 <h2>Short / put candidates</h2>
 <p class="note">Weak trend, weak relative strength, breaking down. For puts or bear spreads, not
 for buying.</p>
@@ -170,6 +192,12 @@ def build_markdown(res, title="Smart Scanner", backtest=None, universe_note="") 
     out.append(_md_table(res.longs, MD_TRADE_COLS, "No stock passed today. Doing nothing is a valid result."))
     out.append("## Watchlist: set a price alert at the pivot\n")
     out.append(_md_table(res.watch, WATCH_COLS, "Nothing close to a breakout."))
+    out.append("## Trend restarts: Supertrend (7, 3) flipped up after a pullback\n")
+    out.append(RESTART_NOTE + "\n")
+    out.append(_md_table(getattr(res, "restarts", None), RESTART_COLS, "No trend restarts today."))
+    out.append("## Close to a trend restart\n")
+    out.append(RESTART_WATCH_NOTE + "\n")
+    out.append(_md_table(getattr(res, "restart_watch", None), RESTART_WATCH_COLS, "None within 6% of a flip."))
     out.append("## Short / put candidates\n")
     out.append(_md_table(res.shorts, MD_TRADE_COLS, "No breakdowns today."))
     if backtest is not None and not backtest.summary.empty:
@@ -191,8 +219,8 @@ def save_report(res, out_dir: str, backtest=None, universe_note="") -> dict:
     md_path = out / f"scan_{stamp}.md"
     md_path.write_text(build_markdown(res, f"Smart Scanner · {stamp}", backtest, universe_note), encoding="utf-8")
     paths = {"html": str(html_path), "md": str(md_path)}
-    for name in ("longs", "shorts", "watch"):
-        df = getattr(res, name)
+    for name in ("longs", "shorts", "watch", "restarts", "restart_watch"):
+        df = getattr(res, name, None)
         if df is not None and not df.empty:
             p = out / f"{name}_{stamp}.csv"
             df.to_csv(p, index=False)

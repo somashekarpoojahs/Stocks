@@ -28,6 +28,16 @@ class Config:
     supertrend_mult: float = 3.0
     fresh_flip_bars: int = 10      # Supertrend flip counts as "fresh" for 10 bars
 
+    # ---- trend restart: the fast Supertrend (7, 3) many charting apps show by default
+    # flips back up after a real pullback in a stock that is still in a long-term uptrend
+    st_fast_period: int = 7
+    st_fast_mult: float = 3.0
+    restart_rsi_dip: float = 40.0        # RSI(14) dipped to 40 or lower within the last 15 bars
+    restart_min_pullback: float = 0.08   # 20-day low at least 8% under the 60-day high
+    restart_fresh_bars: int = 3          # list it for 3 bars after the flip (flip day = bar 1)
+    restart_max_stop_pct: float = 0.15   # stop = the Supertrend (7, 3) line, at most 15% below
+    restart_watch_pct: float = 0.06      # "close to a restart": price within 6% under the line
+
     # ---- trade plan / position sizing ----
     account_size: float = 1000.0        # in account currency (set yours: --account or SCANNER_ACCOUNT)
     account_ccy_per_usd: float = 1.0    # e.g. 0.89 when the account is in EUR

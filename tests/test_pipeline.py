@@ -167,3 +167,18 @@ def test_takeover_pinned_stock_is_skipped(universe, cfg):
     assert res.feats["TKO"]["pinned"].iloc[-1]
     assert "takeover" in res.skipped["TKO"]
     assert all("TKO" not in set(d["ticker"]) for d in (res.longs, res.watch, res.shorts) if not d.empty)
+
+
+def test_restarts_listed_with_the_line_as_stop(universe, cfg):
+    from conftest import restart_stock
+    from smart_scanner.report import build_markdown
+    data = dict(universe)
+    data["RST"] = restart_stock(n_up=244)                               # 261 bars like the rest
+    data["FRM"] = restart_stock(n_up=246, rally=(87.5, 90.0, 91.0))     # still correcting
+    res = run_scan(data, cfg)
+    row = res.restarts.set_index("ticker").loc["RST"]
+    assert row["stop"] == row["line"] and row["stop"] < row["close"]
+    assert row["risk_usd"] <= cfg.account_size * cfg.risk_per_trade + 1e-9
+    w = res.restart_watch.set_index("ticker").loc["FRM"]
+    assert w["alert_at"] > w["close"] and 0 < w["pct_to_flip"] <= 100 * cfg.restart_watch_pct
+    assert "Trend restarts" in build_html(res) and "| RST |" in build_markdown(res)

@@ -30,6 +30,8 @@ def compute_features(df: pd.DataFrame, cfg) -> pd.DataFrame:
     prev_dir = f["st_dir"].shift()
     f["st_bars_since_up"] = I.bars_since((f["st_dir"] == 1) & (prev_dir == -1))
     f["st_bars_since_dn"] = I.bars_since((f["st_dir"] == -1) & (prev_dir == 1))
+    f["st7_line"], f["st7_dir"] = I.supertrend(df, cfg.st_fast_period, cfg.st_fast_mult)
+    f["st7_bars_since_up"] = I.bars_since((f["st7_dir"] == 1) & (f["st7_dir"].shift() == -1))
 
     bb_mid, f["bb_up"], f["bb_lo"] = I.bollinger(c, 20, 2.0)
     _, f["kc_up"], f["kc_lo"] = I.keltner(df, 20, 1.5)

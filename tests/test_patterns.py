@@ -3,7 +3,7 @@ import pandas as pd
 
 from smart_scanner.features import compute_features
 from smart_scanner.patterns import candles
-from conftest import breakdown_stock, breakout_stock, make_bars, random_walk
+from conftest import breakdown_stock, breakout_stock, make_bars, random_walk, restart_stock
 
 
 def bars(rows):
@@ -72,3 +72,18 @@ def test_breakout_without_volume_is_unconfirmed(cfg):
     df.iloc[-1, df.columns.get_loc("volume")] = df["volume"].iloc[-30:-1].mean()   # normal volume
     last = compute_features(df, cfg).iloc[-1]
     assert not last["breakout"] and last["breakout_unconfirmed"]
+
+
+def test_trend_restart_after_pullback(cfg):
+    """Uptrend, a real pullback, then the fast Supertrend (7, 3) flips back up with MACD
+    above its signal and RSI over 50: the 'buy arrow after a correction'."""
+    f = compute_features(restart_stock(), cfg)
+    assert f["restart_forming"].iloc[-6]                 # mid-correction: forming, not firing
+    assert not f["restart"].iloc[:-1].any()
+    last = f.iloc[-1]
+    assert last["restart"] and last["st7_dir"] == 1 and last["st7_bars_since_up"] == 1
+
+
+def test_no_restart_in_a_downtrend(cfg):
+    f = compute_features(make_bars(np.r_[np.linspace(120, 60, 260), [58, 62, 66, 70, 74]]), cfg)
+    assert (f["st7_dir"].iloc[-1] == 1) and not f["restart"].any()   # flipped, but no uptrend

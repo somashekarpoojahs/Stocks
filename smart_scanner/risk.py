@@ -77,7 +77,31 @@ def trade_plan(row, cfg, side: str = "long") -> dict:
             stop = entry * (1 + cfg.max_stop_pct)
         r = stop - entry
         t1, t2 = entry - 2 * r, entry - 3 * r
+    return _sized(entry, stop, r, t1, t2, wide, cfg)
 
+
+def restart_plan(row, cfg) -> dict:
+    """Plan for a trend restart: the stop is the Supertrend (7, 3) line under the price
+    (where the chart's trend turns back down), at most `restart_max_stop_pct` below
+    and never inside today's range. Without an up-trending line (e.g. the random
+    stocks in the study) it falls back to 3 ATR, about where a fresh line sits."""
+    entry = float(row["close"])
+    a = float(row["atr"]) if not np.isnan(row["atr"]) else entry * 0.03
+    line = _num(row, "st7_line")
+    up = row.get("st7_dir", 0) == 1 and not np.isnan(line) and line < entry
+    stop = line if up else entry - 3 * a
+    stop = min(stop, entry - a)                                  # at least 1 ATR of room
+    low = _num(row, "low")
+    if not np.isnan(low):
+        stop = min(stop, low - 0.1 * a)                          # never inside today's range
+    wide = (entry - stop) / entry > cfg.restart_max_stop_pct
+    if wide:
+        stop = entry * (1 - cfg.restart_max_stop_pct)
+    r = entry - stop
+    return _sized(entry, stop, r, entry + 2 * r, entry + 3 * r, wide, cfg)
+
+
+def _sized(entry, stop, r, t1, t2, wide, cfg) -> dict:
     budget = cfg.account_size * cfg.risk_per_trade / cfg.account_ccy_per_usd
     cash_usd = cfg.account_size / cfg.account_ccy_per_usd
     shares = position_size(entry, stop, budget, cash_usd, cfg)
