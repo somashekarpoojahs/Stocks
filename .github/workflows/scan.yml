@@ -1,21 +1,23 @@
-# Nightly scan: Monday-Friday after the US close. Saves the report into scans/ in this repo.
+# Daily scan: Monday-Friday morning, before the US market opens. Scans the previous day's
+# complete bars and saves the report into scans/ in this repo.
 #
 # Your own numbers come from repository variables
 # (Settings > Secrets and variables > Actions > Variables):
 #   ACCOUNT_SIZE (e.g. 500), CCY_PER_USD (0.89 if you size in EUR), RISK (0.02),
 #   FEES (ibkr-fixed | ibkr-tiered | none), UNIVERSE (sp1500 | sp500 | nasdaq100 | ...)
-name: nightly-scan
+name: daily-scan
 
 on:
   schedule:
-    - cron: "30 21 * * 1-5"   # 21:30 UTC: after the US close (21:00 Irish time) all year round
+    - cron: "30 11 * * 1-5"   # 11:30 UTC = 12:30 Irish summer time / 11:30 winter.
+                              # The US opens at 13:30 UTC (summer) or 14:30 UTC (winter).
   workflow_dispatch:          # "Run workflow" button
 
 permissions:
   contents: write             # needed to commit the report into scans/
 
 concurrency:
-  group: nightly-scan
+  group: daily-scan
   cancel-in-progress: false
 
 jobs:

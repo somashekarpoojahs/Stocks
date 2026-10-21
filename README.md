@@ -2,7 +2,7 @@
 
 A whole-market swing-trading scanner for US stocks, plus notes and tools from building it.
 
-Every weekday evening a GitHub Action scores about 1,500 stocks on ~30 indicators plus chart and
+Every weekday morning, before the US market opens, a GitHub Action scores about 1,500 stocks on ~30 indicators plus chart and
 candlestick patterns. It checks the market's mood and saves a report to [`scans/latest.md`](scans/latest.md)
 (it opens nicely in the GitHub phone app). The report has:
 
@@ -17,7 +17,7 @@ It finds candidates. It never places trades. Not financial advice.
 |---|---|
 | `smart_scanner/` | The scanner (Python package) |
 | `tests/` | 37 automated tests |
-| `scans/` | Nightly reports, written by the GitHub Action (`latest.md`, plus one folder per day) |
+| `scans/` | Daily reports, written by the GitHub Action (`latest.md`, plus one folder per day) |
 | `examples/` | A sample report (13 stocks, 20 Oct 2026) |
 | `docs/` | Notes: the options spread system and the first trend-start scanner |
 | `extras/` | Earlier one-off tools (options signals, 10x earnings-option screen, trend-start scanner) |
@@ -78,10 +78,12 @@ One lucky indicator can't produce an A+.
 
 Each plan is sized on its own. Don't hold more than 2–3 positions at once.
 
-## Nightly scan on GitHub (already set up)
+## Daily scan on GitHub (already set up)
 
-The workflow `.github/workflows/scan.yml` runs Monday–Friday at 21:30 UTC, after the US close. You can also run
-it any time: **Actions → nightly-scan → Run workflow**. Each run saves:
+The workflow `.github/workflows/scan.yml` runs Monday–Friday at 11:30 UTC (12:30 Irish time in summer, 11:30
+in winter), before the US open. It scans the previous day's complete bars, so the picks are ready before
+the bell. GitHub sometimes starts scheduled runs a few minutes late. You can also run it any time:
+**Actions → daily-scan → Run workflow**. Each run saves:
 
 - `scans/latest.md` and `scans/latest.html`,
 - `scans/latest_longs.csv` / `_watch` / `_shorts`,
@@ -100,7 +102,7 @@ repository variable**:
 
 **Privacy:** this repo is public. Reports show position sizes, which reveal roughly how big your
 account is once `ACCOUNT_SIZE` is set. To keep that private, go to **Settings → General → Danger Zone →
-Change visibility**. Private repos get 2,000 free Actions minutes a month; a nightly scan uses about 15.
+Change visibility**. Private repos get 2,000 free Actions minutes a month; a daily scan uses about 10.
 
 Prefer GitLab? `.gitlab-ci.yml` does the same there (artifacts instead of commits).
 
@@ -115,7 +117,8 @@ python -m smart_scanner scan --universe sp1500 --account 500 --with-backtest
 
 Then open `reports/scan_YYYY-MM-DD.html` (or the `.md`).
 
-- Run it **after the US close (21:00 Irish time)**. Earlier runs see an unfinished day, and the report says so.
+- Run it **between the US close (21:00 Irish time) and the next open (14:30)**. During the session it would
+  see an unfinished day, and the report says so.
 - The first run of the day downloads ~1,500 tickers (5–10 minutes). Later runs that day use the cache; add `--refresh` to re-download.
 - Instead of flags, you can set `SCANNER_ACCOUNT`, `SCANNER_CCY_PER_USD`, `SCANNER_RISK`, `SCANNER_FEES` and `SCANNER_UNIVERSE` in your shell.
 

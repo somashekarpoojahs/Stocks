@@ -2,10 +2,11 @@
 #
 # One-time setup (keep the project private):
 #   Build > Pipeline schedules > New schedule
-#     Interval pattern: 30 22 * * 1-5    Cron timezone: Dublin    Target branch: main
+#     Interval pattern: 30 12 * * 1-5    Cron timezone: Dublin    Target branch: main
+#     (12:30 Irish time, before the US open at 14:30)
 #   Settings > CI/CD > Variables: SCANNER_ACCOUNT (e.g. 500), and optionally
 #     SCANNER_CCY_PER_USD, SCANNER_RISK, SCANNER_FEES, SCANNER_UNIVERSE
-# Each evening: Build > Pipelines > latest > "scan" job > Artifacts > Browse > reports/
+# Each morning: Build > Pipelines > latest > "scan" job > Artifacts > Browse > reports/
 
 image: python:3.12-slim
 
