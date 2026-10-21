@@ -225,6 +225,20 @@ comparison, every Supertrend (7, 3) flip up with no filter, against the Supertre
 
   The gains came from the market rising, not from the picking. Use the scanner to find and study setups,
   not as a proven edge.
+- **Trend restarts didn't beat random stocks either.** The restart study
+  ([`research/restart_study_2026-10-21.md`](research/restart_study_2026-10-21.md)) covered 5,777 restarts from
+  September 2022 to October 2026.
+  - It caught QQQ and MU on 8 April 2026, at the start of their big moves.
+  - Held with the first stop for up to 60 days, restarts made +0.22R per trade; random stocks bought the
+    same days made +0.21R.
+  - With the chart's own exit (sell when the Supertrend line breaks), restarts made +0.10R vs +0.13R, and 60%
+    of trades lost.
+  - Restarts with RS under 50 did worst (+0.06R).
+  - Plain Supertrend (7, 3) buy arrows, with no other filter, matched random stocks too: 22,782 trades,
+    +0.06R vs +0.08R ([`research/st7_flip_study_2026-10-21.md`](research/st7_flip_study_2026-10-21.md)).
+
+  Restarts tend to fire when the whole market turns up after a dip. On those days most stocks rise, which is
+  why the April winners look so clean in hindsight.
 - Daily bars only: no intraday timing.
 - Yahoo data is free and occasionally late or wrong. IBKR's quote is the reference before ordering.
 - No fundamentals or news. A perfect chart can meet bad news the next morning. That is why step 3
