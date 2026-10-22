@@ -51,6 +51,14 @@ jobs:
       - name: Save the report into scans/
         run: |
           day=$(ls reports/scan_*.md | sed -E 's#.*/scan_(.*)\.md#\1#' | sort | tail -1)
+          # Never replace a report with an older one. A run that GitHub starts late in the US
+          # evening can get Yahoo data that is missing the day just closed (it happened on
+          # 22 Oct 2026: 1,492 of 1,496 stocks ended a day early).
+          saved=$(sed -nE 's/^Data as of ([0-9-]+).*/\1/p' scans/latest.md 2>/dev/null | head -1)
+          if [ -n "$saved" ] && [[ "$day" < "$saved" ]]; then
+            echo "::warning::This run's data ends on $day, before the saved report ($saved). Keeping the saved report."
+            exit 0
+          fi
           mkdir -p "scans/$day"
           cp reports/*"$day"* "scans/$day/"
           cp "reports/scan_$day.md" scans/latest.md
