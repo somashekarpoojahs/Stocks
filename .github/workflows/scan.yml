@@ -10,8 +10,13 @@ name: daily-scan
 
 on:
   schedule:
-    - cron: "40 21 * * 1-5"   # 21:40 UTC Mon-Fri, after the US close (20:00 UTC summer, 21:00 winter)
-    - cron: "0 7 * * 2-6"     # 07:00 UTC Tue-Sat backup, well before the US open (13:30/14:30 UTC)
+    # GitHub often starts scheduled runs hours late. Runs that slipped to ~00:10 UTC got Yahoo
+    # data missing the day just closed (22 and 23 Oct 2026), so the main runs are in the
+    # morning, on odd minutes (the top of the hour is GitHub's busiest time). A run whose data
+    # is older than the saved report never replaces it.
+    - cron: "41 21 * * 1-5"   # 21:41 UTC Mon-Fri, after the US close, when it starts on time
+    - cron: "23 4 * * 2-6"    # 04:23 UTC Tue-Sat
+    - cron: "47 8 * * 2-6"    # 08:47 UTC Tue-Sat, still well before the 12:15 UTC order prep
   workflow_dispatch:          # "Run workflow" button
 
 permissions:

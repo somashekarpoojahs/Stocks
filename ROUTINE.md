@@ -6,7 +6,7 @@ review-and-approve mode, and Claude can only create order *instructions*.
 
 | Time (UTC) | Irish summer / winter | What happens |
 |---|---|---|
-| 21:40 (evening before) | 22:40 / 21:40 | GitHub runs the scan of ~1,500 stocks on the day's complete bars → `scans/latest.md` (07:00 UTC re-run as a backup) |
+| 21:41 (evening before), 04:23, 08:47 | 22:41, 05:23, 09:47 / an hour earlier in winter | GitHub runs the scan of ~1,500 stocks on the last complete day → `scans/latest.md` (runs often start late; older data never replaces newer) |
 | 12:15 | 13:15 / 12:15 | Claude checks the picks (chart + news + live price), prepares the order, updates `trades/journal.md`, sends a phone notification |
 | 13:30 | 14:30 / 13:30* | US market opens (*14:30 UTC after US clocks change on 1 Nov) |
 

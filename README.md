@@ -100,10 +100,12 @@ Each plan is sized on its own. Don't hold more than 2–3 positions at once.
 
 ## Daily scan on GitHub (already set up)
 
-The workflow `.github/workflows/scan.yml` runs at 21:40 UTC Monday–Friday, after the US close, and again at
-07:00 UTC Tuesday–Saturday as a backup. GitHub sometimes starts scheduled runs late (once by 4½ hours, into
-the trading session), so the scanner always leaves out a daily bar that is still forming and scans the last
-complete day. You can also run it any time: **Actions → daily-scan → Run workflow**. Each run saves:
+The workflow `.github/workflows/scan.yml` runs at 21:41 UTC Monday–Friday, after the US close, and again at
+04:23 and 08:47 UTC Tuesday–Saturday. GitHub often starts scheduled runs hours late:
+- Runs that slipped to around 00:10 UTC got Yahoo data missing the day just closed. A run whose data is older
+  than the saved report never replaces it.
+- A run that slips into the trading session leaves out the bar that is still forming and scans the last
+  complete day. You can also run it any time: **Actions → daily-scan → Run workflow**. Each run saves:
 
 - `scans/latest.md` and `scans/latest.html`,
 - `scans/latest_longs.csv` / `_watch` / `_shorts` / `_restarts` / `_restart_watch`,
