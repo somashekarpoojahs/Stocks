@@ -4,7 +4,7 @@ Data as of 2026-10-23 · 1497 stocks scored · universe sp1500
 
 > **Check before acting**
 > - 1 stocks have no bar for 2026-10-23 (halted, delisted or a data gap): ACA.
-> - Backtest: over 14,285 past signals these rules averaged +0.02R per trade, about break-even after costs. Treat today's picks as ideas to research, not proven buys.
+> - Backtest: over 14,287 past signals these rules averaged +0.02R per trade, about break-even after costs. Treat today's picks as ideas to research, not proven buys.
 
 **Market: RISK-ON.** Trend and breadth are healthy. Breakouts work best in this regime.
 
@@ -113,7 +113,7 @@ A stock in a long-term uptrend (rising 200-day, within 25% of its 52-week high) 
 | CVBF | 2026-10-22 | 22.92 | -0.56 | 72 | 63.4 | -9 | 8 | 21.43 | 6.5 | 12.063 | 276.48 | 20 | 2027-01-20 |
 | FULT | 2026-10-22 | 23.67 | 1.37 | 71 | 64 | -13.1 | 8 | 21.96 | 7.2 | 10.523 | 249.08 | 20 | 2027-01-20 |
 | FFBC | 2026-10-22 | 32.64 | 0.52 | 71 | 60.6 | -12.1 | 8 | 30.46 | 6.7 | 8.251 | 269.31 | 20 | 2026-10-27 (in 3d) ⚠ |
-| SLB | 2026-10-23 | 53.06 | 7.08 | 71 | 60.3 | -21.6 | 8 | 46.95 | 11.5 | 2.948 | 156.42 | 20 | reported 2026-10-23 |
+| SLB | 2026-10-23 | 53.06 | 7.08 | 71 | 60.3 | -21.6 | 8 | 46.95 | 11.5 | 2.948 | 156.42 | 20 | 2027-01-22 |
 | BMY | 2026-10-22 | 61.48 | -2.41 | 71 | 51.7 | -17.3 | 7 | 56.2 | 8.6 | 3.411 | 209.71 | 20 | 2026-10-29 (in 5d) ⚠ |
 | FBNC | 2026-10-22 | 64.44 | 0.81 | 71 | 63.3 | -12.1 | 8 | 59.44 | 7.8 | 3.601 | 232.05 | 20 | 2027-01-20 |
 
@@ -195,19 +195,19 @@ Baseline: an average stock-day returned 1.06% over the next 20 days.
 
 | group | trades | win rate % | avg R | avg win R | avg loss R | avg trade % | avg fwd20 % | bench fwd20 % |
 |---|---|---|---|---|---|---|---|---|
-| ALL | 14,285 | 41.3 | 0.02 | 1.45 | -0.99 | 0.18 | 1.09 | 1.23 |
-| score 70-80 | 8,539 | 42.7 | 0.04 | 1.41 | -0.99 | 0.33 | 1.11 | 1.4 |
-| score 80+ | 5,746 | 39.2 | -0.02 | 1.5 | -1 | -0.05 | 1.07 | 0.98 |
-| setup: breakout_recent | 1,033 | 35.4 | -0.13 | 1.47 | -1 | -0.7 | 0.19 | 0.85 |
-| setup: breakout_unconfirmed | 741 | 37.2 | -0.11 | 1.34 | -0.98 | -0.54 | 0.41 | 1.04 |
-| setup: fresh_flip | 2,062 | 41.5 | 0 | 1.4 | -0.99 | 0.04 | 1.24 | 1.6 |
-| setup: gap_recent | 370 | 41.1 | -0.01 | 1.35 | -0.95 | 0.03 | 1.08 | 0.86 |
-| setup: pocket_pivot | 3,918 | 43.4 | 0.07 | 1.44 | -0.98 | 0.54 | 1.7 | 1.13 |
-| setup: pullback | 4,051 | 40.4 | 0.01 | 1.49 | -0.99 | 0.14 | 0.8 | 1.13 |
-| setup: squeeze_fire | 1,181 | 45.9 | 0.13 | 1.42 | -0.97 | 0.77 | 1.86 | 1.67 |
+| ALL | 14,287 | 41.3 | 0.02 | 1.45 | -0.99 | 0.18 | 1.09 | 1.23 |
+| score 70-80 | 8,543 | 42.7 | 0.04 | 1.41 | -0.99 | 0.33 | 1.1 | 1.4 |
+| score 80+ | 5,744 | 39.2 | -0.02 | 1.5 | -1 | -0.04 | 1.07 | 0.98 |
+| setup: breakout_recent | 1,034 | 35.4 | -0.13 | 1.47 | -1 | -0.7 | 0.18 | 0.84 |
+| setup: breakout_unconfirmed | 737 | 37 | -0.12 | 1.34 | -0.98 | -0.56 | 0.39 | 1.04 |
+| setup: fresh_flip | 2,063 | 41.5 | 0 | 1.4 | -0.99 | 0.05 | 1.24 | 1.6 |
+| setup: gap_recent | 371 | 41 | -0.01 | 1.35 | -0.95 | 0.02 | 1.07 | 0.87 |
+| setup: pocket_pivot | 3,918 | 43.4 | 0.07 | 1.44 | -0.98 | 0.54 | 1.71 | 1.13 |
+| setup: pullback | 4,055 | 40.4 | 0.01 | 1.49 | -0.99 | 0.15 | 0.8 | 1.12 |
+| setup: squeeze_fire | 1,180 | 45.8 | 0.13 | 1.42 | -0.97 | 0.76 | 1.86 | 1.67 |
 | setup: vcp | 929 | 40.2 | -0.02 | 1.5 | -1.04 | -0.06 | 0.08 | 1.49 |
-| regime: MIXED | 2,141 | 43.8 | 0.09 | 1.47 | -0.99 | 0.76 | 2.99 | 2.64 |
-| regime: RISK-OFF | 15 | 53.3 | 0.17 | 1.09 | -0.89 | 0.9 | 6.07 | 9.95 |
+| regime: MIXED | 2,144 | 43.8 | 0.09 | 1.47 | -0.99 | 0.76 | 2.98 | 2.63 |
+| regime: RISK-OFF | 14 | 57.1 | 0.27 | 1.09 | -0.81 | 1.28 | 6.91 | 10 |
 | regime: RISK-ON | 12,129 | 40.9 | 0 | 1.44 | -0.99 | 0.07 | 0.77 | 0.97 |
 
 
