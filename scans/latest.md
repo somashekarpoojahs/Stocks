@@ -4,7 +4,8 @@ Data as of 2026-10-29 · 1497 stocks scored · universe sp1500
 
 > **Check before acting**
 > - 1 stocks have no bar for 2026-10-29 (halted, delisted or a data gap): ACA.
-> - Backtest: over 14,256 past signals these rules averaged +0.01R per trade, about break-even after costs. Treat today's picks as ideas to research, not proven buys.
+> - Today's unfinished bar (2026-10-30) was left out: the scan uses the last complete day.
+> - Backtest: over 14,253 past signals these rules averaged +0.01R per trade, about break-even after costs. Treat today's picks as ideas to research, not proven buys.
 
 **Market: RISK-ON.** Trend and breadth are healthy. Breakouts work best in this regime.
 
@@ -166,7 +167,7 @@ Same pullback in an uptrend, but the Supertrend (7, 3) still points down. A dail
 | AMSF | A | 71.4 | Supertrend flip down; candle: shooting star | 23.09 | 24.72 | 7.1 | 19.83 | 11.035 | 20 | 1.7 | 5 | 1.4 | reported 2026-10-28 |
 | HSY | A | 70.1 | Supertrend flip down; candle: shooting star | 160.28 | 168.39 | 5.1 | 144.05 | 2.218 | 19.99 | 1.7 | 20 | 1.83 | reported 2026-10-29 |
 | NRG | B | 69.9 | Supertrend flip down | 97.54 | 105.94 | 8.6 | 80.74 | 2.142 | 20 | 1.7 | 3 | 0.98 | 2026-11-09 |
-| AAON | B | 69.3 | Supertrend flip down | 75.3 | 81.24 | 7.9 | 63.42 | 3.031 | 20 | 1.7 | 10 | 0.6 | 2026-11-05 (in 6d) ⚠ |
+| AAON | B | 69.3 | Supertrend flip down | 75.3 | 81.24 | 7.9 | 63.42 | 3.031 | 20 | 1.7 | 10 | 0.6 | 2026-11-09 |
 | RDDT | B | 68.8 | Breakdown | 129.6 | 142.56 | 10 | 103.68 | 1.388 | 19.99 | 1.7 | 10 | 3.85 | reported 2026-10-29 |
 | KMT | B | 68.7 | Supertrend flip down | 30.18 | 32.15 | 6.5 | 26.24 | 9.137 | 20 | 1.7 | 32 | 1.14 | 2026-11-04 (in 5d) ⚠ |
 | NFLX | B | 68 | Supertrend flip down | 62.05 | 66.04 | 6.4 | 54.07 | 4.51 | 20 | 1.7 | 6 | 1.23 | 2027-01-19 |
@@ -190,20 +191,20 @@ Baseline: an average stock-day returned 1.02% over the next 20 days.
 
 | group | trades | win rate % | avg R | avg win R | avg loss R | avg trade % | avg fwd20 % | bench fwd20 % |
 |---|---|---|---|---|---|---|---|---|
-| ALL | 14,256 | 41.1 | 0.01 | 1.45 | -0.99 | 0.16 | 1.08 | 1.25 |
-| score 70-80 | 8,516 | 42.3 | 0.03 | 1.42 | -0.99 | 0.28 | 1.09 | 1.42 |
-| score 80+ | 5,740 | 39.4 | -0.01 | 1.5 | -0.99 | -0.02 | 1.06 | 1 |
-| setup: breakout_recent | 1,041 | 35.5 | -0.13 | 1.46 | -1 | -0.67 | 0.29 | 0.88 |
-| setup: breakout_unconfirmed | 732 | 35.8 | -0.15 | 1.33 | -0.97 | -0.71 | 0.14 | 1.08 |
+| ALL | 14,253 | 41.1 | 0.01 | 1.45 | -0.99 | 0.16 | 1.08 | 1.25 |
+| score 70-80 | 8,515 | 42.3 | 0.03 | 1.42 | -0.99 | 0.28 | 1.09 | 1.42 |
+| score 80+ | 5,738 | 39.4 | -0.01 | 1.5 | -0.99 | -0.02 | 1.06 | 1 |
+| setup: breakout_recent | 1,041 | 35.5 | -0.13 | 1.46 | -1 | -0.68 | 0.3 | 0.88 |
+| setup: breakout_unconfirmed | 730 | 35.8 | -0.14 | 1.34 | -0.97 | -0.7 | 0.16 | 1.07 |
 | setup: fresh_flip | 2,075 | 41.4 | -0 | 1.4 | -0.99 | 0.05 | 1.22 | 1.64 |
 | setup: gap_recent | 364 | 39.6 | -0.04 | 1.35 | -0.95 | -0.24 | 0.69 | 0.85 |
 | setup: pocket_pivot | 3,924 | 43 | 0.06 | 1.45 | -0.98 | 0.5 | 1.71 | 1.14 |
-| setup: pullback | 4,038 | 40.8 | 0.02 | 1.5 | -0.99 | 0.21 | 0.82 | 1.14 |
-| setup: squeeze_fire | 1,167 | 45.3 | 0.11 | 1.42 | -0.97 | 0.66 | 1.83 | 1.67 |
+| setup: pullback | 4,036 | 40.8 | 0.02 | 1.5 | -0.99 | 0.21 | 0.82 | 1.14 |
+| setup: squeeze_fire | 1,168 | 45.4 | 0.11 | 1.42 | -0.97 | 0.67 | 1.83 | 1.67 |
 | setup: vcp | 915 | 39.7 | -0.03 | 1.5 | -1.04 | -0.13 | 0.08 | 1.49 |
-| regime: MIXED | 2,205 | 43.9 | 0.08 | 1.46 | -0.99 | 0.77 | 2.92 | 2.64 |
+| regime: MIXED | 2,204 | 44 | 0.08 | 1.46 | -0.99 | 0.77 | 2.93 | 2.65 |
 | regime: RISK-OFF | 14 | 57.1 | 0.27 | 1.09 | -0.81 | 1.28 | 6.91 | 10 |
-| regime: RISK-ON | 12,037 | 40.6 | -0 | 1.45 | -0.99 | 0.05 | 0.75 | 0.98 |
+| regime: RISK-ON | 12,035 | 40.6 | -0 | 1.45 | -0.99 | 0.05 | 0.75 | 0.98 |
 
 
 **Max loss $** includes commissions · **Net R:R** is what the 2R target pays after commissions · RS 1–99 relative strength · Not financial advice.
