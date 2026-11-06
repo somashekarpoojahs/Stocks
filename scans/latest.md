@@ -4,7 +4,8 @@ Data as of 2026-11-05 · 1493 stocks scored · universe sp1500
 
 > **Check before acting**
 > - 1 stocks have no bar for 2026-11-05 (halted, delisted or a data gap): ACA.
-> - Backtest: over 14,351 past signals these rules averaged +0.01R per trade, about break-even after costs. Treat today's picks as ideas to research, not proven buys.
+> - Today's unfinished bar (2026-11-06) was left out: the scan uses the last complete day.
+> - Backtest: over 14,349 past signals these rules averaged +0.01R per trade, about break-even after costs. Treat today's picks as ideas to research, not proven buys.
 
 **Market: RISK-ON.** Trend and breadth are healthy. Breakouts work best in this regime.
 
@@ -169,20 +170,20 @@ Baseline: an average stock-day returned 0.96% over the next 20 days.
 
 | group | trades | win rate % | avg R | avg win R | avg loss R | avg trade % | avg fwd20 % | bench fwd20 % |
 |---|---|---|---|---|---|---|---|---|
-| ALL | 14,351 | 40.9 | 0.01 | 1.47 | -0.99 | 0.14 | 0.94 | 0.96 |
-| score 70-80 | 8,609 | 42.4 | 0.04 | 1.44 | -0.99 | 0.3 | 1 | 1.09 |
-| score 80+ | 5,742 | 38.7 | -0.02 | 1.52 | -1 | -0.1 | 0.85 | 0.75 |
-| setup: breakout_recent | 1,038 | 35.4 | -0.13 | 1.47 | -1 | -0.65 | 0.33 | 0.79 |
-| setup: breakout_unconfirmed | 697 | 35 | -0.16 | 1.36 | -0.99 | -0.79 | 0.19 | 0.86 |
+| ALL | 14,349 | 40.9 | 0.01 | 1.47 | -0.99 | 0.14 | 0.94 | 0.96 |
+| score 70-80 | 8,607 | 42.4 | 0.04 | 1.44 | -0.99 | 0.31 | 1 | 1.09 |
+| score 80+ | 5,742 | 38.7 | -0.02 | 1.52 | -1 | -0.11 | 0.85 | 0.75 |
+| setup: breakout_recent | 1,039 | 35.3 | -0.13 | 1.47 | -1 | -0.66 | 0.33 | 0.79 |
+| setup: breakout_unconfirmed | 697 | 35.3 | -0.16 | 1.36 | -0.99 | -0.77 | 0.2 | 0.86 |
 | setup: fresh_flip | 2,121 | 41.3 | 0.01 | 1.45 | -1 | 0.08 | 0.9 | 1.14 |
 | setup: gap_recent | 364 | 39.3 | -0.04 | 1.35 | -0.94 | -0.3 | 0.68 | 0.72 |
-| setup: pocket_pivot | 4,008 | 42.9 | 0.07 | 1.46 | -0.98 | 0.46 | 1.47 | 0.84 |
-| setup: pullback | 4,027 | 40.2 | 0.01 | 1.51 | -1 | 0.13 | 0.74 | 0.87 |
-| setup: squeeze_fire | 1,199 | 45.8 | 0.14 | 1.45 | -0.97 | 0.8 | 1.72 | 1.34 |
-| setup: vcp | 897 | 39.6 | -0.03 | 1.5 | -1.04 | -0.16 | 0.04 | 1.31 |
-| regime: MIXED | 2,276 | 45 | 0.11 | 1.46 | -0.99 | 0.9 | 2.53 | 2.32 |
+| setup: pocket_pivot | 4,008 | 42.9 | 0.07 | 1.46 | -0.98 | 0.47 | 1.47 | 0.84 |
+| setup: pullback | 4,023 | 40.1 | 0.01 | 1.51 | -1 | 0.12 | 0.73 | 0.87 |
+| setup: squeeze_fire | 1,199 | 45.8 | 0.14 | 1.46 | -0.97 | 0.8 | 1.72 | 1.34 |
+| setup: vcp | 898 | 39.6 | -0.03 | 1.5 | -1.04 | -0.16 | 0.04 | 1.31 |
+| regime: MIXED | 2,275 | 45 | 0.11 | 1.46 | -0.99 | 0.9 | 2.53 | 2.32 |
 | regime: RISK-OFF | 14 | 57.1 | 0.27 | 1.09 | -0.81 | 1.28 | 6.91 | 10 |
-| regime: RISK-ON | 12,061 | 40.1 | -0 | 1.47 | -0.99 | -0 | 0.63 | 0.69 |
+| regime: RISK-ON | 12,060 | 40.1 | -0 | 1.47 | -0.99 | -0 | 0.63 | 0.69 |
 
 
 **Max loss $** includes commissions · **Net R:R** is what the 2R target pays after commissions · RS 1–99 relative strength · Not financial advice.
