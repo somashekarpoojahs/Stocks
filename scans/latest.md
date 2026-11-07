@@ -1,10 +1,10 @@
 # Smart Scanner · 2026-11-06
 
-Data as of 2026-11-06 · 1492 stocks scored · universe sp1500
+Data as of 2026-11-06 · 1493 stocks scored · universe sp1500
 
 > **Check before acting**
 > - 1 stocks have no bar for 2026-11-06 (halted, delisted or a data gap): ACA.
-> - Backtest: over 14,375 past signals these rules averaged +0.01R per trade, about break-even after costs. Treat today's picks as ideas to research, not proven buys.
+> - Backtest: over 14,385 past signals these rules averaged +0.01R per trade, about break-even after costs. Treat today's picks as ideas to research, not proven buys.
 
 **Market: MIXED.** Mixed signals. Be selective: only A/A+ setups, smaller size.
 
@@ -65,7 +65,6 @@ Data as of 2026-11-06 · 1492 stocks scored · universe sp1500
 | AMH | 59.1 | 32.82 | 34.55 | 5.3 | 51 | 62.6 | 5 | reported 2026-11-04 |
 | RNR | 59 | 347.35 | 363.84 | 4.7 | 78 | 53.7 | 8 | reported 2026-10-27 |
 | HFWA | 54.7 | 28.39 | 29.87 | 5.2 | 59 | 52 | 7 | 2027-01-21 |
-| FULT | 54.3 | 23.76 | 24.78 | 4.3 | 68 | 56.3 | 7 | 2027-01-20 |
 | CURB | 51.5 | 29.38 | 30.47 | 3.7 | 68 | 59.3 | 6 |  |
 | JOE | 48.7 | 69.97 | 72.79 | 4 | 62 | 56.6 | 5 | reported 2026-10-28 |
 | FOX | 47.2 | 59.5 | 62.62 | 5.2 | 55 | 54.8 | 6 | reported 2026-11-02 |
@@ -108,7 +107,7 @@ Same pullback in an uptrend, but the Supertrend (7, 3) still points down. A dail
 | DE | 671.65 | 683.9 | 1.8 | 82 | 56 | -14.1 | 8 | 2026-11-25 |
 | GRMN | 285.57 | 302.17 | 5.8 | 80 | 52.4 | -15 | 8 | reported 2026-10-28 |
 | CF | 119.39 | 126.21 | 5.7 | 77 | 50.7 | -21.9 | 6 | reported 2026-11-05 |
-| MUSA | 521.89 | 547.02 | 4.8 | 73 | 49 | -18.7 | 6 | reported 2026-10-28 |
+| MUSA | 521.89 | 547.02 | 4.8 | 72 | 49 | -18.7 | 6 | reported 2026-10-28 |
 | WAB | 283.59 | 295.25 | 4.1 | 68 | 49.1 | -10.8 | 6 |  |
 | ESS | 272.18 | 282.93 | 3.9 | 52 | 52.2 | -11.3 | 4 | reported 2026-10-27 |
 | TRMK | 44.64 | 46.59 | 4.4 | 50 | 44.9 | -9.3 | 4 | 2027-01-26 |
@@ -159,20 +158,20 @@ Baseline: an average stock-day returned 0.96% over the next 20 days.
 
 | group | trades | win rate % | avg R | avg win R | avg loss R | avg trade % | avg fwd20 % | bench fwd20 % |
 |---|---|---|---|---|---|---|---|---|
-| ALL | 14,375 | 40.7 | 0.01 | 1.47 | -1 | 0.1 | 0.91 | 0.93 |
-| score 70-80 | 8,645 | 42.3 | 0.04 | 1.44 | -0.99 | 0.28 | 1 | 1.07 |
-| score 80+ | 5,730 | 38.4 | -0.03 | 1.52 | -1 | -0.16 | 0.79 | 0.71 |
-| setup: breakout_recent | 1,050 | 34.9 | -0.14 | 1.49 | -1 | -0.7 | 0.39 | 0.7 |
-| setup: breakout_unconfirmed | 706 | 35.3 | -0.16 | 1.36 | -0.99 | -0.77 | 0.18 | 0.83 |
-| setup: fresh_flip | 2,111 | 41 | 0.01 | 1.46 | -1 | 0.03 | 0.81 | 1.11 |
-| setup: gap_recent | 363 | 39.4 | -0.04 | 1.34 | -0.94 | -0.29 | 0.68 | 0.69 |
-| setup: pocket_pivot | 4,000 | 42.6 | 0.06 | 1.47 | -0.99 | 0.41 | 1.44 | 0.8 |
-| setup: pullback | 4,037 | 40.3 | 0.01 | 1.51 | -1 | 0.12 | 0.71 | 0.85 |
-| setup: squeeze_fire | 1,206 | 45.5 | 0.13 | 1.46 | -0.98 | 0.76 | 1.76 | 1.31 |
+| ALL | 14,385 | 40.7 | 0.01 | 1.47 | -1 | 0.11 | 0.92 | 0.93 |
+| score 70-80 | 8,650 | 42.3 | 0.04 | 1.44 | -0.99 | 0.28 | 0.99 | 1.07 |
+| score 80+ | 5,735 | 38.4 | -0.03 | 1.52 | -1 | -0.16 | 0.81 | 0.71 |
+| setup: breakout_recent | 1,053 | 34.8 | -0.14 | 1.49 | -1.01 | -0.72 | 0.38 | 0.71 |
+| setup: breakout_unconfirmed | 704 | 35.2 | -0.16 | 1.36 | -0.99 | -0.77 | 0.18 | 0.84 |
+| setup: fresh_flip | 2,115 | 41 | 0.01 | 1.46 | -1 | 0.03 | 0.82 | 1.11 |
+| setup: gap_recent | 364 | 39.3 | -0.04 | 1.34 | -0.94 | -0.3 | 0.67 | 0.69 |
+| setup: pocket_pivot | 4,003 | 42.6 | 0.06 | 1.47 | -0.99 | 0.42 | 1.46 | 0.8 |
+| setup: pullback | 4,035 | 40.2 | 0.01 | 1.51 | -1 | 0.11 | 0.71 | 0.86 |
+| setup: squeeze_fire | 1,209 | 45.7 | 0.13 | 1.46 | -0.98 | 0.77 | 1.75 | 1.32 |
 | setup: vcp | 902 | 39.2 | -0.05 | 1.49 | -1.04 | -0.21 | -0.03 | 1.32 |
-| regime: MIXED | 2,327 | 45 | 0.11 | 1.46 | -0.99 | 0.89 | 2.53 | 2.31 |
-| regime: RISK-OFF | 14 | 57.1 | 0.27 | 1.09 | -0.81 | 1.28 | 6.91 | 10 |
-| regime: RISK-ON | 12,034 | 39.9 | -0.01 | 1.47 | -1 | -0.05 | 0.59 | 0.65 |
+| regime: MIXED | 2,331 | 45 | 0.11 | 1.46 | -0.99 | 0.89 | 2.52 | 2.31 |
+| regime: RISK-OFF | 15 | 53.3 | 0.17 | 1.09 | -0.89 | 0.9 | 6.07 | 9.95 |
+| regime: RISK-ON | 12,039 | 39.9 | -0.01 | 1.48 | -1 | -0.05 | 0.6 | 0.65 |
 
 
 **Max loss $** includes commissions · **Net R:R** is what the 2R target pays after commissions · RS 1–99 relative strength · Not financial advice.
