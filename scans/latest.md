@@ -4,8 +4,7 @@ Data as of 2026-11-10 · 1491 stocks scored · universe sp1500
 
 > **Check before acting**
 > - 1 stocks have no bar for 2026-11-10 (halted, delisted or a data gap): ACA.
-> - Today's unfinished bar (2026-11-11) was left out: the scan uses the last complete day.
-> - Backtest: over 14,295 past signals these rules averaged +0.01R per trade, about break-even after costs. Treat today's picks as ideas to research, not proven buys.
+> - Backtest: over 14,259 past signals these rules averaged +0.01R per trade, about break-even after costs. Treat today's picks as ideas to research, not proven buys.
 
 **Market: RISK-ON.** Trend and breadth are healthy. Breakouts work best in this regime.
 
@@ -17,7 +16,7 @@ Data as of 2026-11-10 · 1491 stocks scored · universe sp1500
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | TGTX | A+ | 99.9 | Base breakout; Pocket pivot | 64.26 | 61 | 5.1 | 70.77 | 5.529 | 20 | 1.7 | 98 | 3.17 | reported 2026-11-09 |
 | SPNT | A+ | 96.2 | Squeeze firing; Pocket pivot | 27.38 | 25.93 | 5.3 | 30.28 | 12.417 | 20 | 1.7 | 86 | 2.98 | reported 2026-11-05 |
-| GO | A+ | 95.9 | Base breakout; Pocket pivot | 14.02 | 13.4 | 4.5 | 15.27 | 28.849 | 20 | 1.7 | 94 | 1.67 | reported 2026-11-10 |
+| GO | A+ | 95.9 | Base breakout; Pocket pivot | 14.02 | 13.4 | 4.5 | 15.27 | 28.849 | 20 | 1.7 | 94 | 1.71 | reported 2026-11-10 |
 | AMG | A+ | 93.6 | Base breakout; Pocket pivot; Supertrend flip up | 401.32 | 383.32 | 4.5 | 437.31 | 1 | 20 | 1.7 | 87 | 2.53 | reported 2026-11-09 |
 | THC | A+ | 92.6 | Gap up holding; Supertrend flip up; candle: hammer | 290.27 | 268.12 | 7.6 | 334.58 | 0.812 | 19.99 | 1.7 | 90 | 1.1 | reported 2026-10-29 |
 | VCTR | A+ | 92 | Base breakout; Supertrend flip up | 126.38 | 120.5 | 4.7 | 138.14 | 3.062 | 20 | 1.7 | 95 | 1.51 | 2027-02-03 |
@@ -34,7 +33,7 @@ Data as of 2026-11-10 · 1491 stocks scored · universe sp1500
 | USPH | A+ | 88.7 | Squeeze firing; candle: hammer | 99.24 | 92.42 | 6.9 | 112.89 | 2.638 | 20 | 1.7 | 90 | 0.97 | reported 2026-11-04 |
 | FDS | A+ | 88.4 | Pullback to 21-EMA | 325.98 | 302.12 | 7.3 | 373.7 | 0.754 | 19.99 | 1.7 | 92 | 1.37 | 2026-12-17 |
 | ABNB | A+ | 87.6 | Gap up holding | 186.9 | 173.22 | 7.3 | 214.26 | 1.315 | 19.99 | 1.7 | 90 | 0.97 | reported 2026-11-05 |
-| LQDT | A+ | 87.5 | Pullback to 21-EMA | 46 | 43.02 | 6.5 | 51.96 | 6.044 | 20 | 1.7 | 93 | 0.76 | 2026-11-19 |
+| LQDT | A+ | 87.5 | Pullback to 21-EMA | 46 | 43.02 | 6.5 | 51.96 | 6.044 | 20 | 1.7 | 93 | 0.76 | 2026-11-19 (in 7d) ⚠ |
 | XYZ | A+ | 87.4 | Squeeze firing; Gap up holding; Supertrend flip up | 85.58 | 78.7 | 8 | 99.34 | 2.616 | 20 | 1.7 | 83 | 1.23 | reported 2026-11-03 |
 | ACHC | A+ | 86.3 | Gap up holding; Pocket pivot; candle: hammer | 38.64 | 34.78 | 10 | 46.37 | 4.658 | 20 | 1.7 | 98 | 2.05 | reported 2026-11-04 |
 | HRB | A+ | 86.3 | Pullback to 21-EMA | 50.99 | 47.27 | 7.3 | 58.43 | 4.836 | 20 | 1.7 | 80 | 1.01 | 2027-02-02 |
@@ -66,15 +65,15 @@ Data as of 2026-11-10 · 1491 stocks scored · universe sp1500
 | LLY | 69.7 | 1,432 | 1,450 | 1.2 | 92 | 69.8 | 8 | reported 2026-10-29 |
 | A | 69.3 | 177.88 | 182.99 | 2.9 | 90 | 56 | 8 | 2026-11-23 |
 | VRTX | 69.2 | 547.89 | 568.67 | 3.8 | 74 | 57.8 | 8 | reported 2026-11-02 |
-| BIIB | 69.1 | 253.25 | 258.78 | 2.2 | 91 | 59.8 | 8 | reported 2026-10-28 |
-| LH | 69 | 370.88 | 371 | 0 | 89 | 71.1 | 8 | reported 2026-10-28 |
+| BIIB | 69.1 | 253.25 | 258.78 | 2.2 | 91 | 59.8 | 8 |  |
+| LH | 69 | 370.88 | 371 | 0 | 89 | 71.1 | 8 |  |
 | EBC | 68.7 | 23.1 | 23.61 | 2.2 | 67 | 61.3 | 7 | 2027-01-21 |
 | NXPI | 68.1 | 261.56 | 270.96 | 3.6 | 64 | 59.4 | 6 |  |
 | GILD | 68.1 | 170.87 | 175.65 | 2.8 | 88 | 64.2 | 7 | reported 2026-10-29 |
 | NIC | 67.8 | 175.53 | 179.45 | 2.2 | 74 | 61.8 | 8 | 2027-01-19 |
 | LGND | 67.2 | 314.16 | 325.96 | 3.8 | 92 | 54.4 | 8 | reported 2026-10-29 |
 | AMRX | 67.2 | 21.38 | 21.68 | 1.4 | 95 | 60.7 | 8 | reported 2026-11-03 |
-| PAG | 67.2 | 213.44 | 221.04 | 3.6 | 79 | 60.9 | 8 | reported 2026-10-28 |
+| PAG | 67.2 | 213.44 | 221.04 | 3.6 | 79 | 60.9 | 8 |  |
 | HOMB | 67.2 | 30.23 | 31.29 | 3.5 | 54 | 59.8 | 6 | 2027-01-13 |
 | EMR | 66.5 | 167.54 | 171.25 | 2.2 | 68 | 56.1 | 7 | 2027-02-02 |
 | ADP | 65.7 | 305.44 | 309.4 | 1.3 | 86 | 63.3 | 8 | 2027-01-27 |
@@ -109,16 +108,16 @@ Same pullback in an uptrend, but the Supertrend (7, 3) still points down. A dail
 | VIRT | 57.75 | 58.96 | 2.1 | 86 | 58.3 | -24 | 8 | 2027-02-04 |
 | EXTR | 25.48 | 25.66 | 0.7 | 86 | 61.6 | -23.2 | 7 | 2027-01-27 |
 | RAL | 69.93 | 73.99 | 5.8 | 85 | 52.1 | -18.1 | 8 | reported 2026-11-04 |
-| GRMN | 288.66 | 302.17 | 4.7 | 78 | 54.1 | -13.6 | 8 | reported 2026-10-28 |
+| GRMN | 288.66 | 302.17 | 4.7 | 78 | 54.1 | -13.6 | 8 |  |
 | ATI | 182.72 | 185.19 | 1.3 | 77 | 52.3 | -33.4 | 6 | reported 2026-10-29 |
 | MSM | 119.3 | 125.03 | 4.8 | 75 | 48.6 | -17.7 | 7 | 2027-01-06 |
 | STT | 171.62 | 178.16 | 3.8 | 73 | 50 | -19.7 | 7 | 2027-01-15 |
 | NDSN | 325.1 | 341.59 | 5.1 | 73 | 51.3 | -8.7 | 8 | 2026-12-15 |
 | CF | 122.36 | 126.21 | 3.1 | 73 | 55.2 | -21.9 | 8 | reported 2026-11-05 |
 | ANET | 185.02 | 195.19 | 5.5 | 71 | 50.9 | -27.2 | 7 | reported 2026-11-03 |
-| ARMK | 54.22 | 56.65 | 4.5 | 70 | 49.2 | -19.3 | 7 | 2026-11-16 (in 5d) ⚠ |
-| MUSA | 519.44 | 547.02 | 5.3 | 69 | 48.5 | -18.7 | 4 | reported 2026-10-28 |
-| IEX | 236.9 | 244.14 | 3.1 | 67 | 54.6 | -8.5 | 7 | reported 2026-10-28 |
+| ARMK | 54.22 | 56.65 | 4.5 | 70 | 49.2 | -19.3 | 7 | 2026-11-16 (in 4d) ⚠ |
+| MUSA | 519.44 | 547.02 | 5.3 | 69 | 48.5 | -18.7 | 4 |  |
+| IEX | 236.9 | 244.14 | 3.1 | 67 | 54.6 | -8.5 | 7 |  |
 | PLUS | 96.61 | 98.4 | 1.8 | 66 | 56.6 | -19.1 | 7 | reported 2026-11-05 |
 | WTS | 359.31 | 372.01 | 3.5 | 62 | 53 | -13 | 7 | reported 2026-11-04 |
 | MMSI | 87.81 | 92.99 | 5.9 | 58 | 47.7 | -11.9 | 6 | reported 2026-10-29 |
@@ -141,18 +140,18 @@ Same pullback in an uptrend, but the Supertrend (7, 3) still points down. A dail
 | TRIP | A+ | 81.9 | Failed breakout; Supertrend flip down | 7.09 | 7.8 | 10 | 5.67 | 25.387 | 20 | 1.7 | 3 | 2.23 | reported 2026-11-05 |
 | GMED | A+ | 80.7 | Failed breakout; Supertrend flip down | 75.23 | 82.53 | 9.7 | 60.62 | 2.464 | 19.99 | 1.7 | 20 | 1.08 | reported 2026-11-05 |
 | AORT | A | 76.2 | Supertrend flip down | 20.47 | 22.52 | 10 | 16.38 | 8.793 | 20 | 1.7 | 4 | 1.5 | reported 2026-11-05 |
-| ROAD | A | 76.2 | Supertrend flip down | 81.64 | 89.8 | 10 | 65.31 | 2.204 | 19.99 | 1.7 | 4 | 1.75 | 2026-11-19 |
+| ROAD | A | 76.2 | Supertrend flip down | 81.64 | 89.8 | 10 | 65.31 | 2.204 | 19.99 | 1.7 | 4 | 1.75 | 2026-11-19 (in 7d) ⚠ |
 | BROS | A | 76.1 | Supertrend flip down | 35.29 | 38.82 | 10 | 28.23 | 5.1 | 20 | 1.7 | 5 | 1.27 | reported 2026-11-04 |
-| VRT | A | 75.7 | Supertrend flip down | 194.22 | 213.64 | 10 | 155.38 | 0.926 | 19.98 | 1.7 | 9 | 1.04 | reported 2026-10-28 |
+| VRT | A | 75.7 | Supertrend flip down | 194.22 | 213.64 | 10 | 155.38 | 0.926 | 19.98 | 1.7 | 9 | 1.04 |  |
 | NSSC | A | 75.6 | Supertrend flip down | 31.34 | 34.25 | 9.3 | 25.53 | 6.195 | 20 | 1.7 | 9 | 0.95 | 2027-02-01 |
 | EXE | A | 75 | Supertrend flip down | 87.94 | 93.18 | 6 | 77.46 | 3.433 | 20 | 1.7 | 18 | 0.93 |  |
 | SRE | A | 74.9 | Supertrend flip down | 78.38 | 81.78 | 4.3 | 71.58 | 5.29 | 20 | 1.7 | 19 | 0.94 | reported 2026-11-05 |
 | RES | A | 74.7 | Failed breakout; Supertrend flip down | 5.22 | 5.74 | 10 | 4.18 | 34.482 | 20 | 1.7 | 16 | 1.18 | reported 2026-10-29 |
 | MGY | A | 74.6 | Supertrend flip down | 22.97 | 24.73 | 7.7 | 19.44 | 10.203 | 20 | 1.7 | 22 | 0.9 | reported 2026-11-04 |
 | TPL | A | 73.5 | Supertrend flip down; candle: shooting star | 274.63 | 302.09 | 10 | 219.7 | 0.655 | 19.99 | 1.7 | 8 | 1.26 | reported 2026-11-04 |
-| AM | A | 73.4 | Supertrend flip down | 19.78 | 21.09 | 6.6 | 17.16 | 13.739 | 20 | 1.7 | 36 | 0.85 | reported 2026-10-28 |
+| AM | A | 73.4 | Supertrend flip down | 19.78 | 21.09 | 6.6 | 17.16 | 13.739 | 20 | 1.7 | 36 | 0.85 |  |
 | FIS | A | 71.7 | Supertrend flip down | 28.31 | 31.14 | 10 | 22.65 | 6.358 | 20 | 1.7 | 3 | 1.25 | reported 2026-11-04 |
-| ORCL | A | 71 | Supertrend flip down | 117.98 | 129.78 | 10 | 94.38 | 1.525 | 19.99 | 1.7 | 5 | 0.63 | 2026-12-14 |
+| ORCL | A | 71 | Supertrend flip down | 117.98 | 129.78 | 10 | 94.38 | 1.525 | 19.99 | 1.7 | 5 | 0.64 | 2026-12-14 |
 | BFAM | A | 70.8 | Supertrend flip down | 51.74 | 56.91 | 10 | 41.39 | 3.478 | 20 | 1.7 | 4 | 0.95 | reported 2026-10-29 |
 | AROC | A | 70 | Supertrend flip down | 27.88 | 30.61 | 9.8 | 22.41 | 6.583 | 20 | 1.7 | 21 | 1.14 | reported 2026-11-02 |
 | VAL | B | 78.7 | Failed breakout; Supertrend flip down | 78.92 | 86.81 | 10 | 63.14 | 2.28 | 19.99 | 1.7 | 44 | 0.53 | reported 2026-11-02 |
@@ -166,7 +165,7 @@ Same pullback in an uptrend, but the Supertrend (7, 3) still points down. A dail
 | VNOM | B | 69.2 | Failed breakout; Supertrend flip down | 40.19 | 42.9 | 6.7 | 34.77 | 6.647 | 20 | 1.7 | 35 | 0.98 | reported 2026-11-02 |
 | BL | B | 68.7 | Failed breakout; Supertrend flip down | 27.33 | 30.06 | 10 | 21.86 | 6.586 | 20 | 1.7 | 12 | 1.12 | reported 2026-11-05 |
 | EQT | B | 68.6 | Failed breakout; Supertrend flip down | 52 | 55.32 | 6.4 | 45.37 | 5.428 | 20 | 1.7 | 28 | 0.94 |  |
-| ODFL | B | 68.2 | Supertrend flip down | 168.02 | 181.3 | 7.9 | 141.46 | 1.355 | 20 | 1.7 | 22 | 0.94 | reported 2026-10-28 |
+| ODFL | B | 68.2 | Supertrend flip down | 168.02 | 181.3 | 7.9 | 141.46 | 1.355 | 20 | 1.7 | 22 | 0.94 |  |
 | TRMB | B | 68.2 | Failed breakout; Supertrend flip down | 54.75 | 59.38 | 8.5 | 45.49 | 3.886 | 20 | 1.7 | 17 | 0.93 | reported 2026-11-04 |
 
 ## Backtest of these rules
@@ -175,20 +174,20 @@ Baseline: an average stock-day returned 0.97% over the next 20 days.
 
 | group | trades | win rate % | avg R | avg win R | avg loss R | avg trade % | avg fwd20 % | bench fwd20 % |
 |---|---|---|---|---|---|---|---|---|
-| ALL | 14,295 | 40.9 | 0.01 | 1.47 | -1 | 0.13 | 0.94 | 1 |
-| score 70-80 | 8,590 | 42.4 | 0.04 | 1.44 | -0.99 | 0.29 | 1.02 | 1.16 |
-| score 80+ | 5,705 | 38.7 | -0.02 | 1.52 | -1 | -0.11 | 0.82 | 0.77 |
-| setup: breakout_recent | 1,055 | 35 | -0.13 | 1.49 | -1.01 | -0.69 | 0.37 | 0.8 |
-| setup: breakout_unconfirmed | 696 | 34.6 | -0.18 | 1.35 | -0.99 | -0.85 | 0.14 | 0.87 |
-| setup: fresh_flip | 2,107 | 41 | 0 | 1.45 | -1 | 0.01 | 0.8 | 1.23 |
-| setup: gap_recent | 364 | 40.1 | -0.03 | 1.34 | -0.94 | -0.14 | 0.98 | 0.76 |
-| setup: pocket_pivot | 3,961 | 42.9 | 0.07 | 1.47 | -0.99 | 0.45 | 1.5 | 0.87 |
-| setup: pullback | 4,004 | 40.5 | 0.02 | 1.51 | -1 | 0.16 | 0.74 | 0.91 |
-| setup: squeeze_fire | 1,202 | 45.7 | 0.13 | 1.45 | -0.98 | 0.76 | 1.72 | 1.36 |
-| setup: vcp | 906 | 40 | -0.03 | 1.49 | -1.04 | -0.12 | 0.06 | 1.37 |
-| regime: MIXED | 2,336 | 44.7 | 0.11 | 1.46 | -0.99 | 0.85 | 2.52 | 2.34 |
+| ALL | 14,259 | 40.9 | 0.01 | 1.47 | -1 | 0.13 | 0.95 | 1 |
+| score 70-80 | 8,569 | 42.4 | 0.04 | 1.44 | -0.99 | 0.29 | 1.03 | 1.17 |
+| score 80+ | 5,690 | 38.6 | -0.03 | 1.52 | -1 | -0.12 | 0.83 | 0.76 |
+| setup: breakout_recent | 1,055 | 35 | -0.13 | 1.49 | -1.01 | -0.71 | 0.36 | 0.8 |
+| setup: breakout_unconfirmed | 698 | 34.4 | -0.18 | 1.36 | -0.99 | -0.85 | 0.16 | 0.87 |
+| setup: fresh_flip | 2,105 | 40.8 | -0 | 1.45 | -1 | -0.02 | 0.77 | 1.24 |
+| setup: gap_recent | 365 | 40 | -0.03 | 1.35 | -0.94 | -0.17 | 0.96 | 0.78 |
+| setup: pocket_pivot | 3,947 | 42.9 | 0.06 | 1.47 | -0.99 | 0.44 | 1.49 | 0.87 |
+| setup: pullback | 3,995 | 40.5 | 0.02 | 1.51 | -1 | 0.16 | 0.75 | 0.91 |
+| setup: squeeze_fire | 1,194 | 46 | 0.14 | 1.46 | -0.97 | 0.81 | 1.78 | 1.38 |
+| setup: vcp | 900 | 39.9 | -0.02 | 1.5 | -1.04 | -0.12 | 0.08 | 1.39 |
+| regime: MIXED | 2,332 | 44.7 | 0.11 | 1.46 | -0.99 | 0.86 | 2.53 | 2.37 |
 | regime: RISK-OFF | 14 | 57.1 | 0.27 | 1.09 | -0.81 | 1.29 | 6.91 | 10 |
-| regime: RISK-ON | 11,945 | 40.2 | -0.01 | 1.47 | -1 | -0.01 | 0.62 | 0.73 |
+| regime: RISK-ON | 11,913 | 40.1 | -0.01 | 1.48 | -1 | -0.02 | 0.62 | 0.73 |
 
 
 **Max loss $** includes commissions · **Net R:R** is what the 2R target pays after commissions · RS 1–99 relative strength · Not financial advice.
