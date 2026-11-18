@@ -1,6 +1,5 @@
 ticker,close,day_pct,rs_rating,rsi,adx,trend_template,stage,supertrend,ext_atr,rvol,pct_from_hi52,earnings,alert_at,pct_to_flip,pullback_pct
 CXW,32.46,4.81,95.0,56.1,14.9,8,2.0,down,0.3,0.76,-11.2,reported 2026-11-04,33.19,2.3,-26.5
-AMG,386.8,-0.21,86.0,52.3,16.4,8,2.0,up,0.8,0.56,-5.2,reported 2026-11-09,403.07,4.2,-14.7
 KNTK,54.23,-1.35,84.0,52.7,16.1,8,2.0,down,0.5,1.13,-7.9,reported 2026-11-04,55.76,2.8,-18.6
 TRGP,291.35,-0.26,83.0,50.9,16.2,8,2.0,down,0.3,1.0,-8.0,reported 2026-11-05,303.89,4.3,-17.5
 ARMK,56.58,2.19,80.0,58.4,18.5,8,2.0,up,0.8,1.66,-9.5,2027-02-10,56.65,0.1,-16.9
