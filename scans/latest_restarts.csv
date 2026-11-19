@@ -1,0 +1,2 @@
+ticker,close,day_pct,rs_rating,rsi,adx,trend_template,stage,supertrend,ext_atr,rvol,pct_from_hi52,earnings,flip_day,pullback_pct,line,entry,stop,stop_pct,target_2r,target_3r,stop_capped,shares,position_usd,fees_usd,risk_usd,risk_budget_usd,net_rr
+ARMK,56.85,0.48,82.0,59.4,18.0,8,2.0,up,0.9,1.15,-9.1,2027-02-10,2026-11-18,-16.9,50.57,56.85,50.57,11.0,69.4,75.68,False,2.867,162.99,2.0,20.0,20.0,1.7
