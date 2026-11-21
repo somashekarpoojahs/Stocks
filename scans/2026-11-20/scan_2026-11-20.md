@@ -4,7 +4,7 @@ Data as of 2026-11-20 · 1491 stocks scored · universe sp1500
 
 > **Check before acting**
 > - 3 stocks have no bar for 2026-11-20 (halted, delisted or a data gap): ACA, ITGR, SNDK.
-> - Backtest: over 14,250 past signals these rules averaged -0.01R per trade, about break-even after costs. Treat today's picks as ideas to research, not proven buys.
+> - Backtest: over 14,247 past signals these rules averaged -0.01R per trade, about break-even after costs. Treat today's picks as ideas to research, not proven buys.
 
 **Market: RISK-OFF.** Market is weak. Most breakouts fail here. Prefer cash, puts or short setups; longs need an A+ score and half size.
 
@@ -32,7 +32,7 @@ Data as of 2026-11-20 · 1491 stocks scored · universe sp1500
 | CL | B | 62.7 | Pocket pivot | 98.71 | 94.48 | 4.3 | 107.17 | 4.256 | 20 | 1.7 | 75 | 1.23 | 2027-01-29 |
 | WTW | B | 62.6 | VCP (tightening) | 331.01 | 314.15 | 5.1 | 364.72 | 1.067 | 19.99 | 1.7 | 69 | 0.99 |  |
 | WEN | B | 62.3 | Pocket pivot | 8.6 | 7.92 | 7.9 | 9.96 | 26.538 | 20 | 1.7 | 68 | 1.1 |  |
-| GHC | B | 61.9 | Pocket pivot | 1,252 | 1,188 | 5.1 | 1,380 | 0.281 | 19.95 | 1.7 | 77 | 1.65 |  |
+| GHC | B | 61.9 | Pocket pivot | 1,252 | 1,188 | 5.1 | 1,380 | 0.281 | 19.96 | 1.7 | 77 | 1.65 |  |
 | BRKR | B | 61.4 | Supertrend flip up | 56.46 | 52.68 | 6.7 | 64.01 | 4.766 | 20 | 1.7 | 85 | 0.92 |  |
 | HGV | B | 61.2 | Base breakout | 43.67 | 42.06 | 3.7 | 46.88 | 11.2 | 20 | 1.7 | 47 | 1.14 |  |
 | EXPO | B | 60.7 | Pocket pivot | 89.16 | 84.56 | 5.2 | 98.35 | 3.916 | 20 | 1.7 | 94 | 0.96 |  |
@@ -132,20 +132,20 @@ Baseline: an average stock-day returned 0.98% over the next 20 days.
 
 | group | trades | win rate % | avg R | avg win R | avg loss R | avg trade % | avg fwd20 % | bench fwd20 % |
 |---|---|---|---|---|---|---|---|---|
-| ALL | 14,250 | 40.1 | -0.01 | 1.47 | -1 | 0.02 | 0.9 | 0.54 |
+| ALL | 14,247 | 40.1 | -0.01 | 1.47 | -1 | 0.02 | 0.9 | 0.55 |
 | score 70-80 | 8,555 | 41.7 | 0.02 | 1.44 | -1 | 0.19 | 1.03 | 0.7 |
-| score 80+ | 5,695 | 37.8 | -0.05 | 1.52 | -1 | -0.23 | 0.72 | 0.32 |
-| setup: breakout_recent | 1,058 | 34.2 | -0.15 | 1.49 | -1 | -0.8 | 0.61 | 0.39 |
-| setup: breakout_unconfirmed | 688 | 35.5 | -0.15 | 1.39 | -0.99 | -0.71 | 0.18 | 0.59 |
-| setup: fresh_flip | 2,121 | 40.4 | -0.02 | 1.44 | -1.01 | -0.12 | 0.87 | 0.54 |
-| setup: gap_recent | 376 | 37.5 | -0.09 | 1.35 | -0.95 | -0.7 | 0.72 | 0.05 |
-| setup: pocket_pivot | 3,970 | 42.4 | 0.05 | 1.47 | -0.99 | 0.39 | 1.37 | 0.43 |
-| setup: pullback | 3,926 | 39.1 | -0.02 | 1.51 | -1 | -0.03 | 0.62 | 0.47 |
-| setup: squeeze_fire | 1,221 | 45 | 0.12 | 1.46 | -0.97 | 0.7 | 1.8 | 0.87 |
+| score 80+ | 5,692 | 37.8 | -0.05 | 1.52 | -1 | -0.23 | 0.72 | 0.32 |
+| setup: breakout_recent | 1,058 | 34.2 | -0.15 | 1.49 | -1 | -0.81 | 0.6 | 0.39 |
+| setup: breakout_unconfirmed | 685 | 35.5 | -0.15 | 1.39 | -0.99 | -0.72 | 0.17 | 0.59 |
+| setup: fresh_flip | 2,121 | 40.5 | -0.02 | 1.44 | -1.01 | -0.11 | 0.88 | 0.54 |
+| setup: gap_recent | 377 | 37.4 | -0.09 | 1.35 | -0.95 | -0.7 | 0.71 | 0.05 |
+| setup: pocket_pivot | 3,969 | 42.4 | 0.05 | 1.47 | -0.99 | 0.39 | 1.37 | 0.43 |
+| setup: pullback | 3,923 | 39.1 | -0.02 | 1.51 | -1 | -0.04 | 0.61 | 0.46 |
+| setup: squeeze_fire | 1,224 | 44.9 | 0.12 | 1.46 | -0.97 | 0.7 | 1.8 | 0.87 |
 | setup: vcp | 890 | 39.2 | -0.04 | 1.5 | -1.04 | -0.16 | -0.05 | 1.34 |
-| regime: MIXED | 2,394 | 44.6 | 0.1 | 1.45 | -0.99 | 0.85 | 2.68 | 2.38 |
+| regime: MIXED | 2,395 | 44.6 | 0.1 | 1.45 | -0.99 | 0.85 | 2.68 | 2.38 |
 | regime: RISK-OFF | 14 | 57.1 | 0.27 | 1.09 | -0.81 | 1.29 | 6.91 | 10 |
-| regime: RISK-ON | 11,842 | 39.2 | -0.03 | 1.48 | -1 | -0.15 | 0.53 | 0.16 |
+| regime: RISK-ON | 11,838 | 39.2 | -0.03 | 1.48 | -1 | -0.15 | 0.53 | 0.16 |
 
 
 **Max loss $** includes commissions · **Net R:R** is what the 2R target pays after commissions · RS 1–99 relative strength · Not financial advice.
