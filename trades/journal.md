@@ -60,6 +60,8 @@ Rules: [`ROUTINE.md`](../ROUTINE.md).
 
 2026-11-23: no new order. Market still **RISK-OFF** in the 20 Nov scan (S&P 500 below its 50- and 200-day averages), so no new buys. The IBKR connection still needs a new sign-in, so positions (DOCU, WSFS), the ARMK fill and order instructions could not be checked or updated. DOCU must be sold by 2 Dec (earnings 3 Dec).
 
+2026-11-24: no new order. Market still **RISK-OFF** in the 23 Nov scan (S&P 500 below its 50- and 200-day averages; more 52-week lows than highs), so no new buys. The IBKR connection still needs a new sign-in (third day), so positions (DOCU, WSFS), the ARMK fill and order instructions could not be checked or updated. DOCU must be sold by 2 Dec (earnings 3 Dec): a SELL instruction is due from about 1 Dec.
+
 ## Running stats
 
 | Trades closed | Win rate | Average R | Total R |
