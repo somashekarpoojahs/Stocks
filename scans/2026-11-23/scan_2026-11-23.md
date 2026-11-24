@@ -5,7 +5,7 @@ Data as of 2026-11-23 · 1490 stocks scored · universe sp1500
 > **Check before acting**
 > - 2 stocks have no bar for 2026-11-23 (halted, delisted or a data gap): ITGR, SNDK.
 > - Today's unfinished bar (2026-11-24) was left out: the scan uses the last complete day.
-> - Backtest: over 14,143 past signals these rules averaged -0.01R per trade, about break-even after costs. Treat today's picks as ideas to research, not proven buys.
+> - Backtest: over 14,144 past signals these rules averaged -0.01R per trade, about break-even after costs. Treat today's picks as ideas to research, not proven buys.
 
 **Market: RISK-OFF.** Market is weak. Most breakouts fail here. Prefer cash, puts or short setups; longs need an A+ score and half size.
 
@@ -137,7 +137,7 @@ Same pullback in an uptrend, but the Supertrend (7, 3) still points down. A dail
 | INTU | A | 91.1 | Supertrend flip down; candle: shooting star | 275.46 | 303.01 | 10 | 220.37 | 0.653 | 19.99 | 1.7 | 9 | 1.27 | reported 2026-11-19 |
 | CWEN | A | 90.6 | Supertrend flip down | 28.41 | 30.96 | 9 | 23.31 | 7.059 | 20 | 1.7 | 14 | 1.52 | 2027-02-23 |
 | MC | A | 90.5 | Supertrend flip down | 52.41 | 56.9 | 8.6 | 43.42 | 4.006 | 20 | 1.7 | 15 | 0.87 | 2027-02-03 |
-| UBER | A | 90.4 | Supertrend flip down | 64.07 | 68.91 | 7.6 | 54.38 | 3.716 | 20 | 1.7 | 16 | 1.1 | 2027-02-03 |
+| UBER | A | 90.4 | Supertrend flip down | 64.07 | 68.91 | 7.6 | 54.38 | 3.716 | 20 | 1.7 | 16 | 1.11 | 2027-02-03 |
 | RITM | A | 90.1 | Supertrend flip down | 8.16 | 8.71 | 6.8 | 7.06 | 32.597 | 20 | 1.7 | 19 | 1.12 | 2027-02-02 |
 | SBAC | A | 89.6 | Supertrend flip down; candle: bearish engulfing | 171 | 183.04 | 7 | 146.93 | 1.495 | 19.99 | 1.7 | 24 | 0.82 |  |
 | LEU | A | 89.2 | Supertrend flip down | 86.81 | 95.49 | 10 | 69.45 | 2.073 | 20 | 1.7 | 2 | 1.22 | 2027-02-10 |
@@ -164,20 +164,20 @@ Baseline: an average stock-day returned 0.99% over the next 20 days.
 
 | group | trades | win rate % | avg R | avg win R | avg loss R | avg trade % | avg fwd20 % | bench fwd20 % |
 |---|---|---|---|---|---|---|---|---|
-| ALL | 14,143 | 40.1 | -0.01 | 1.47 | -1 | 0.01 | 0.91 | 0.66 |
-| score 70-80 | 8,479 | 41.8 | 0.02 | 1.44 | -1 | 0.19 | 1.05 | 0.81 |
-| score 80+ | 5,664 | 37.6 | -0.05 | 1.52 | -1 | -0.26 | 0.7 | 0.44 |
+| ALL | 14,144 | 40.1 | -0.01 | 1.47 | -1 | 0 | 0.9 | 0.66 |
+| score 70-80 | 8,482 | 41.8 | 0.02 | 1.44 | -1 | 0.18 | 1.04 | 0.81 |
+| score 80+ | 5,662 | 37.6 | -0.05 | 1.52 | -1 | -0.26 | 0.7 | 0.44 |
 | setup: breakout_recent | 1,066 | 34.1 | -0.16 | 1.48 | -1 | -0.83 | 0.62 | 0.63 |
-| setup: breakout_unconfirmed | 675 | 35 | -0.17 | 1.36 | -0.99 | -0.81 | 0.16 | 0.62 |
+| setup: breakout_unconfirmed | 673 | 34.8 | -0.18 | 1.36 | -0.99 | -0.84 | 0.11 | 0.62 |
 | setup: fresh_flip | 2,121 | 40.3 | -0.02 | 1.43 | -1.01 | -0.17 | 0.73 | 0.78 |
 | setup: gap_recent | 377 | 37.4 | -0.1 | 1.32 | -0.95 | -0.78 | 0.64 | 0.3 |
-| setup: pocket_pivot | 3,928 | 42.5 | 0.06 | 1.47 | -0.99 | 0.41 | 1.46 | 0.53 |
-| setup: pullback | 3,885 | 39.2 | -0.02 | 1.51 | -1 | -0.04 | 0.62 | 0.53 |
-| setup: squeeze_fire | 1,212 | 45 | 0.12 | 1.45 | -0.97 | 0.69 | 1.82 | 1.01 |
-| setup: vcp | 879 | 39.2 | -0.03 | 1.52 | -1.04 | -0.13 | -0.03 | 1.29 |
+| setup: pocket_pivot | 3,929 | 42.5 | 0.06 | 1.47 | -0.99 | 0.41 | 1.46 | 0.53 |
+| setup: pullback | 3,887 | 39.1 | -0.02 | 1.51 | -1 | -0.04 | 0.61 | 0.53 |
+| setup: squeeze_fire | 1,212 | 45 | 0.12 | 1.45 | -0.97 | 0.68 | 1.81 | 1.01 |
+| setup: vcp | 879 | 39.2 | -0.04 | 1.52 | -1.04 | -0.14 | -0.03 | 1.28 |
 | regime: MIXED | 2,378 | 44.5 | 0.1 | 1.45 | -0.99 | 0.82 | 2.71 | 2.43 |
 | regime: RISK-OFF | 15 | 53.3 | 0.16 | 1.09 | -0.9 | 1.02 | 6.91 | 9.4 |
-| regime: RISK-ON | 11,750 | 39.2 | -0.03 | 1.47 | -1 | -0.16 | 0.53 | 0.29 |
+| regime: RISK-ON | 11,751 | 39.2 | -0.03 | 1.47 | -1 | -0.16 | 0.52 | 0.29 |
 
 
 **Max loss $** includes commissions · **Net R:R** is what the 2R target pays after commissions · RS 1–99 relative strength · Not financial advice.
