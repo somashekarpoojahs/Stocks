@@ -5,7 +5,7 @@ Data as of 2026-11-24 · 1490 stocks scored · universe sp1500
 > **Check before acting**
 > - 2 stocks have no bar for 2026-11-24 (halted, delisted or a data gap): ITGR, SNDK.
 > - Today's unfinished bar (2026-11-25) was left out: the scan uses the last complete day.
-> - Backtest: over 14,166 past signals these rules averaged -0.01R per trade, about break-even after costs. Treat today's picks as ideas to research, not proven buys.
+> - Backtest: over 14,165 past signals these rules averaged -0.01R per trade, about break-even after costs. Treat today's picks as ideas to research, not proven buys.
 
 **Market: MIXED.** Mixed signals. Be selective: only A/A+ setups, smaller size.
 
@@ -168,20 +168,20 @@ Baseline: an average stock-day returned 0.99% over the next 20 days.
 
 | group | trades | win rate % | avg R | avg win R | avg loss R | avg trade % | avg fwd20 % | bench fwd20 % |
 |---|---|---|---|---|---|---|---|---|
-| ALL | 14,166 | 40.1 | -0.01 | 1.47 | -1 | 0 | 0.88 | 0.64 |
-| score 70-80 | 8,493 | 41.8 | 0.02 | 1.43 | -1 | 0.18 | 1.02 | 0.79 |
-| score 80+ | 5,673 | 37.6 | -0.05 | 1.52 | -1 | -0.26 | 0.67 | 0.41 |
-| setup: breakout_recent | 1,069 | 34.1 | -0.15 | 1.49 | -1 | -0.82 | 0.59 | 0.6 |
-| setup: breakout_unconfirmed | 675 | 34.8 | -0.18 | 1.35 | -0.99 | -0.85 | 0.1 | 0.6 |
-| setup: fresh_flip | 2,125 | 40.3 | -0.02 | 1.43 | -1.01 | -0.18 | 0.71 | 0.74 |
-| setup: gap_recent | 377 | 37.4 | -0.1 | 1.32 | -0.95 | -0.78 | 0.57 | 0.27 |
-| setup: pocket_pivot | 3,934 | 42.6 | 0.05 | 1.47 | -0.99 | 0.41 | 1.44 | 0.5 |
-| setup: pullback | 3,894 | 39.1 | -0.02 | 1.51 | -1 | -0.04 | 0.58 | 0.52 |
+| ALL | 14,165 | 40.1 | -0.01 | 1.47 | -1 | 0 | 0.88 | 0.64 |
+| score 70-80 | 8,493 | 41.8 | 0.02 | 1.43 | -1 | 0.18 | 1.02 | 0.78 |
+| score 80+ | 5,672 | 37.6 | -0.05 | 1.52 | -1 | -0.26 | 0.67 | 0.41 |
+| setup: breakout_recent | 1,070 | 34.1 | -0.15 | 1.49 | -1 | -0.82 | 0.59 | 0.6 |
+| setup: breakout_unconfirmed | 674 | 34.6 | -0.18 | 1.35 | -0.99 | -0.86 | 0.09 | 0.6 |
+| setup: fresh_flip | 2,125 | 40.3 | -0.02 | 1.43 | -1.01 | -0.18 | 0.69 | 0.73 |
+| setup: gap_recent | 376 | 37.5 | -0.1 | 1.32 | -0.95 | -0.77 | 0.58 | 0.27 |
+| setup: pocket_pivot | 3,935 | 42.6 | 0.06 | 1.47 | -0.99 | 0.41 | 1.45 | 0.5 |
+| setup: pullback | 3,893 | 39.1 | -0.02 | 1.51 | -1 | -0.04 | 0.58 | 0.51 |
 | setup: squeeze_fire | 1,214 | 45 | 0.12 | 1.45 | -0.97 | 0.68 | 1.79 | 0.98 |
 | setup: vcp | 878 | 39.2 | -0.04 | 1.52 | -1.04 | -0.14 | -0.03 | 1.29 |
-| regime: MIXED | 2,381 | 44.4 | 0.09 | 1.45 | -0.99 | 0.81 | 2.71 | 2.41 |
-| regime: RISK-OFF | 17 | 52.9 | 0.18 | 1.18 | -0.96 | 1.02 | 6.07 | 9.05 |
-| regime: RISK-ON | 11,768 | 39.3 | -0.03 | 1.47 | -1 | -0.16 | 0.5 | 0.27 |
+| regime: MIXED | 2,379 | 44.4 | 0.09 | 1.45 | -0.99 | 0.81 | 2.71 | 2.41 |
+| regime: RISK-OFF | 16 | 56.2 | 0.27 | 1.18 | -0.9 | 1.36 | 6.91 | 9.04 |
+| regime: RISK-ON | 11,770 | 39.2 | -0.03 | 1.47 | -1 | -0.16 | 0.5 | 0.27 |
 
 
 **Max loss $** includes commissions · **Net R:R** is what the 2R target pays after commissions · RS 1–99 relative strength · Not financial advice.
