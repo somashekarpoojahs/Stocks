@@ -62,6 +62,8 @@ Rules: [`ROUTINE.md`](../ROUTINE.md).
 
 2026-11-24: no new order. Market still **RISK-OFF** in the 23 Nov scan (S&P 500 below its 50- and 200-day averages; more 52-week lows than highs), so no new buys. The IBKR connection still needs a new sign-in (third day), so positions (DOCU, WSFS), the ARMK fill and order instructions could not be checked or updated. DOCU must be sold by 2 Dec (earnings 3 Dec): a SELL instruction is due from about 1 Dec.
 
+2026-11-25: no new order. Scan for 24 Nov on time; market back to **MIXED** (only A/A+ setups), so a buy was allowed, but the IBKR connection still needs a new sign-in (fourth day): no live quote, account size or order instruction was possible, and no order is built without them. Best chart-and-news fits for when it is back: DLTR and ANF (both reported 24 Nov, gap up holding + pocket pivot). Positions (DOCU, WSFS), the ARMK fill and order instructions could not be checked. Market closed 26 Nov (Thanksgiving), half day 27 Nov. DOCU must be sold by 2 Dec (earnings 3 Dec): a SELL instruction is due 30 Nov–1 Dec.
+
 ## Running stats
 
 | Trades closed | Win rate | Average R | Total R |
