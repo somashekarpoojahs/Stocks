@@ -1,10 +1,10 @@
 # Smart Scanner · 2026-11-25
 
-Data as of 2026-11-25 · 1490 stocks scored · universe sp1500
+Data as of 2026-11-25 · 1489 stocks scored · universe sp1500
 
 > **Check before acting**
 > - 2 stocks have no bar for 2026-11-25 (halted, delisted or a data gap): ITGR, SNDK.
-> - Backtest: over 14,135 past signals these rules averaged -0.01R per trade, about break-even after costs. Treat today's picks as ideas to research, not proven buys.
+> - Backtest: over 14,125 past signals these rules averaged -0.01R per trade, about break-even after costs. Treat today's picks as ideas to research, not proven buys.
 
 **Market: MIXED.** Mixed signals. Be selective: only A/A+ setups, smaller size.
 
@@ -66,8 +66,8 @@ Data as of 2026-11-25 · 1490 stocks scored · universe sp1500
 | PPG | 67.9 | 124.61 | 128.11 | 2.8 | 73 | 60.9 | 8 | 2027-01-26 |
 | AWR | 67.5 | 88.93 | 91.36 | 2.7 | 73 | 62.7 | 8 | 2027-02-17 |
 | SIRI | 67.1 | 32.51 | 33.49 | 3 | 92 | 65.3 | 8 | 2027-02-04 |
+| HLT | 67 | 366.2 | 381.34 | 4.1 | 79 | 54.9 | 8 | 2027-02-10 |
 | VRSN | 67 | 319.47 | 323.78 | 1.3 | 83 | 64.8 | 8 | 2027-02-04 |
-| HLT | 66.9 | 366.2 | 381.34 | 4.1 | 78 | 54.9 | 8 | 2027-02-10 |
 | CCK | 66.8 | 124.52 | 126.36 | 1.5 | 79 | 64.1 | 8 | 2027-02-03 |
 | PCTY | 66.7 | 179.33 | 185.93 | 3.7 | 93 | 61.2 | 8 | 2027-02-04 |
 | JAZZ | 66.6 | 245.29 | 252.5 | 2.9 | 72 | 59.1 | 7 | 2027-02-23 |
@@ -108,12 +108,12 @@ Same pullback in an uptrend, but the Supertrend (7, 3) still points down. A dail
 | EXPD | 198.19 | 206.81 | 4.3 | 85 | 56.4 | -11.4 | 8 | 2027-02-16 |
 | PTGX | 132.8 | 139.75 | 5.2 | 85 | 49.4 | -21.1 | 7 |  |
 | MET | 99.78 | 104.68 | 4.9 | 83 | 50.4 | -10.8 | 8 | 2027-02-10 |
+| CNO | 56.11 | 58.75 | 4.7 | 83 | 51.1 | -9 | 8 | 2027-02-04 |
 | TTC | 105.92 | 109.53 | 3.4 | 82 | 56.2 | -9.4 | 8 | 2026-12-16 |
 | CVX | 210.95 | 221.07 | 4.8 | 82 | 46.6 | -12.9 | 7 | 2027-01-29 |
-| CNO | 56.11 | 58.75 | 4.7 | 82 | 51.1 | -9 | 8 | 2027-02-04 |
 | PBI | 15.33 | 16.16 | 5.4 | 79 | 44.2 | -17.3 | 5 | 2027-02-16 |
 | FAST | 52.93 | 55.97 | 5.7 | 78 | 50.9 | -10.2 | 8 | 2027-01-19 |
-| LTC | 43.33 | 45.12 | 4.1 | 75 | 51.5 | -11.6 | 8 | 2027-02-23 |
+| LTC | 43.33 | 45.12 | 4.1 | 76 | 51.5 | -11.6 | 8 | 2027-02-23 |
 | MRK | 140.29 | 148.16 | 5.6 | 75 | 46.1 | -14.7 | 7 | 2027-02-02 |
 | MTCH | 41.07 | 43.39 | 5.6 | 75 | 50.9 | -17.9 | 7 | 2027-02-02 |
 | PLUS | 97.71 | 98.12 | 0.4 | 73 | 56.6 | -20.2 | 8 | 2027-02-09 |
@@ -128,7 +128,7 @@ Same pullback in an uptrend, but the Supertrend (7, 3) still points down. A dail
 | PKG | 246.87 | 256.3 | 3.8 | 69 | 52.3 | -11 | 7 | 2027-01-26 |
 | NWBI | 14.67 | 15.48 | 5.5 | 68 | 42.4 | -10.5 | 6 | 2027-01-25 |
 | PFE | 28.46 | 29.33 | 3.1 | 67 | 48.1 | -11.9 | 5 | 2027-02-02 |
-| FCF | 20.31 | 21.48 | 5.7 | 67 | 42.8 | -9 | 5 | 2027-01-26 |
+| BNY | 147.16 | 154.13 | 4.7 | 67 | 48.8 | -14.7 | 5 | 2027-01-15 |
 
 ## Short / put candidates
 
@@ -171,20 +171,20 @@ Baseline: an average stock-day returned 1.00% over the next 20 days.
 
 | group | trades | win rate % | avg R | avg win R | avg loss R | avg trade % | avg fwd20 % | bench fwd20 % |
 |---|---|---|---|---|---|---|---|---|
-| ALL | 14,135 | 40.2 | -0.01 | 1.47 | -1 | 0 | 0.86 | 0.61 |
-| score 70-80 | 8,502 | 41.9 | 0.02 | 1.44 | -1 | 0.2 | 1.04 | 0.77 |
-| score 80+ | 5,633 | 37.6 | -0.05 | 1.52 | -1 | -0.28 | 0.6 | 0.38 |
-| setup: breakout_recent | 1,068 | 34.3 | -0.15 | 1.49 | -1 | -0.8 | 0.6 | 0.56 |
-| setup: breakout_unconfirmed | 671 | 34.9 | -0.17 | 1.36 | -0.99 | -0.82 | 0.12 | 0.59 |
-| setup: fresh_flip | 2,127 | 40.4 | -0.02 | 1.43 | -1 | -0.16 | 0.64 | 0.71 |
-| setup: gap_recent | 374 | 36.9 | -0.11 | 1.32 | -0.95 | -0.92 | 0.55 | 0.26 |
-| setup: pocket_pivot | 3,928 | 42.7 | 0.06 | 1.46 | -0.99 | 0.43 | 1.43 | 0.48 |
-| setup: pullback | 3,883 | 39.1 | -0.02 | 1.51 | -1 | -0.06 | 0.56 | 0.49 |
-| setup: squeeze_fire | 1,212 | 44.9 | 0.12 | 1.45 | -0.97 | 0.66 | 1.74 | 0.96 |
-| setup: vcp | 872 | 39.4 | -0.03 | 1.51 | -1.04 | -0.13 | -0.01 | 1.28 |
-| regime: MIXED | 2,438 | 44.3 | 0.09 | 1.45 | -0.99 | 0.77 | 2.66 | 2.4 |
-| regime: RISK-OFF | 17 | 52.9 | 0.19 | 1.18 | -0.92 | 1.03 | 6.91 | 8.43 |
-| regime: RISK-ON | 11,680 | 39.3 | -0.03 | 1.47 | -1 | -0.16 | 0.47 | 0.23 |
+| ALL | 14,125 | 40.2 | -0.01 | 1.47 | -1 | 0 | 0.86 | 0.61 |
+| score 70-80 | 8,505 | 41.9 | 0.02 | 1.44 | -1 | 0.2 | 1.04 | 0.77 |
+| score 80+ | 5,620 | 37.5 | -0.05 | 1.52 | -1 | -0.3 | 0.59 | 0.38 |
+| setup: breakout_recent | 1,070 | 34.1 | -0.15 | 1.49 | -1 | -0.81 | 0.59 | 0.56 |
+| setup: breakout_unconfirmed | 670 | 34.8 | -0.17 | 1.36 | -0.99 | -0.83 | 0.1 | 0.59 |
+| setup: fresh_flip | 2,126 | 40.4 | -0.02 | 1.43 | -1 | -0.16 | 0.65 | 0.72 |
+| setup: gap_recent | 373 | 37 | -0.11 | 1.32 | -0.95 | -0.91 | 0.56 | 0.25 |
+| setup: pocket_pivot | 3,924 | 42.8 | 0.06 | 1.46 | -0.99 | 0.43 | 1.44 | 0.48 |
+| setup: pullback | 3,881 | 39 | -0.02 | 1.51 | -1 | -0.07 | 0.54 | 0.49 |
+| setup: squeeze_fire | 1,210 | 45 | 0.12 | 1.46 | -0.97 | 0.68 | 1.79 | 0.96 |
+| setup: vcp | 871 | 39.4 | -0.03 | 1.51 | -1.04 | -0.14 | -0.01 | 1.28 |
+| regime: MIXED | 2,458 | 44.1 | 0.08 | 1.45 | -1 | 0.75 | 2.63 | 2.39 |
+| regime: RISK-OFF | 18 | 50 | 0.11 | 1.18 | -0.97 | 0.72 | 6.07 | 8.47 |
+| regime: RISK-ON | 11,649 | 39.3 | -0.03 | 1.47 | -1 | -0.16 | 0.48 | 0.23 |
 
 
 **Max loss $** includes commissions · **Net R:R** is what the 2R target pays after commissions · RS 1–99 relative strength · Not financial advice.
