@@ -1,11 +1,11 @@
 # Smart Scanner · 2026-11-27
 
-Data as of 2026-11-27 · 1489 stocks scored · universe sp1500
+Data as of 2026-11-27 · 1490 stocks scored · universe sp1500
 
 > **Check before acting**
 > - Today's bar looks unfinished: the typical stock traded only 38% of its normal volume. Breakouts need volume, so re-run after the US close (about 21:00 Irish time) before acting.
 > - 2 stocks have no bar for 2026-11-27 (halted, delisted or a data gap): ITGR, SNDK.
-> - Backtest: over 14,094 past signals these rules averaged -0.01R per trade, about break-even after costs. Treat today's picks as ideas to research, not proven buys.
+> - Backtest: over 14,097 past signals these rules averaged -0.01R per trade, about break-even after costs. Treat today's picks as ideas to research, not proven buys.
 
 **Market: MIXED.** Mixed signals. Be selective: only A/A+ setups, smaller size.
 
@@ -39,7 +39,7 @@ Data as of 2026-11-27 · 1489 stocks scored · universe sp1500
 | ARMK | A | 80.7 | Supertrend flip up | 58.01 | 54.41 | 6.2 | 65.22 | 4.994 | 20 | 1.7 | 82 | 0.49 | 2027-02-10 |
 | NPK | A | 79.6 | Base breakout; Supertrend flip up | 165.8 | 154.62 | 6.7 | 188.16 | 1.609 | 19.99 | 1.7 | 91 | 1.04 | 2027-02-19 |
 | CNXC | A | 79.4 | Squeeze firing; Pocket pivot; Breakout, volume unconfirmed | 35.37 | 31.83 | 10 | 42.44 | 5.089 | 20 | 1.7 | 79 | 0.6 | 2027-01-13 |
-| ADP | A | 79.1 | Supertrend flip up | 319.43 | 306.05 | 4.2 | 346.19 | 1.345 | 19.99 | 1.7 | 90 | 0.42 | 2027-01-27 |
+| ADP | A | 79.3 | Supertrend flip up | 319.43 | 306.05 | 4.2 | 346.19 | 1.345 | 19.99 | 1.7 | 91 | 0.42 | 2027-01-27 |
 | HOG | A | 79.1 | Breakout, volume unconfirmed | 35.05 | 32.75 | 6.6 | 39.65 | 7.821 | 20 | 1.7 | 97 | 0.38 | 2027-02-10 |
 | KHC | A | 79.1 | Squeeze firing | 26.49 | 25.05 | 5.5 | 29.38 | 12.464 | 20 | 1.7 | 64 | 0.58 | 2027-02-10 |
 | GME | A | 78.5 | Supertrend flip up | 26.34 | 24.43 | 7.3 | 30.17 | 9.407 | 20 | 1.7 | 91 | 0.33 | 2026-12-08 |
@@ -151,8 +151,8 @@ Same pullback in an uptrend, but the Supertrend (7, 3) still points down. A dail
 | MC | A | 84.1 | Supertrend flip down | 53.7 | 58.02 | 8.1 | 45.05 | 4.163 | 20 | 1.7 | 15 | 0.39 | 2027-02-03 |
 | TFIN | A | 83.8 | Supertrend flip down | 55.98 | 59.93 | 7.1 | 48.07 | 4.553 | 20 | 1.7 | 18 | 0.22 | 2027-02-01 |
 | LZB | A | 83.7 | Supertrend flip down | 30.32 | 32.4 | 6.9 | 26.16 | 8.652 | 20 | 1.7 | 19 | 0.37 | 2027-02-16 |
+| CWEN | A | 83.6 | Supertrend flip down | 30.69 | 32.88 | 7.1 | 26.32 | 8.234 | 20 | 1.7 | 20 | 0.59 | 2027-02-23 |
 | CASH | A | 83.5 | Supertrend flip down | 72.1 | 76.3 | 5.8 | 63.7 | 4.286 | 20 | 1.7 | 21 | 0.45 | 2027-01-21 |
-| CWEN | A | 83.5 | Supertrend flip down | 30.69 | 32.88 | 7.1 | 26.32 | 8.234 | 20 | 1.7 | 21 | 0.59 | 2027-02-23 |
 | USLM | A | 83.5 | Supertrend flip down | 105.83 | 113.78 | 7.5 | 89.92 | 2.263 | 20 | 1.7 | 21 | 0.29 | 2027-02-03 |
 | BANC | A | 83.2 | Supertrend flip down | 16.8 | 17.72 | 5.5 | 14.95 | 19.508 | 20 | 1.7 | 24 | 0.24 | 2027-01-20 |
 | HBAN | A | 83 | Supertrend flip down | 15.04 | 15.81 | 5.2 | 13.49 | 23.231 | 20 | 1.7 | 26 | 0.22 | 2027-01-21 |
@@ -174,20 +174,20 @@ Baseline: an average stock-day returned 1.02% over the next 20 days.
 
 | group | trades | win rate % | avg R | avg win R | avg loss R | avg trade % | avg fwd20 % | bench fwd20 % |
 |---|---|---|---|---|---|---|---|---|
-| ALL | 14,094 | 40.2 | -0.01 | 1.46 | -1 | -0 | 0.83 | 0.63 |
-| score 70-80 | 8,478 | 41.9 | 0.02 | 1.44 | -1 | 0.19 | 0.99 | 0.8 |
-| score 80+ | 5,616 | 37.6 | -0.05 | 1.51 | -1 | -0.3 | 0.58 | 0.39 |
-| setup: breakout_recent | 1,080 | 34.3 | -0.16 | 1.48 | -1.01 | -0.81 | 0.62 | 0.63 |
-| setup: breakout_unconfirmed | 667 | 34.5 | -0.18 | 1.36 | -0.99 | -0.89 | 0.04 | 0.59 |
-| setup: fresh_flip | 2,129 | 40.6 | -0.02 | 1.42 | -1 | -0.15 | 0.64 | 0.74 |
-| setup: gap_recent | 376 | 37.2 | -0.1 | 1.32 | -0.95 | -0.81 | 0.32 | 0.3 |
-| setup: pocket_pivot | 3,912 | 42.6 | 0.05 | 1.46 | -0.99 | 0.4 | 1.38 | 0.5 |
-| setup: pullback | 3,863 | 39.3 | -0.02 | 1.51 | -1 | -0.05 | 0.56 | 0.51 |
-| setup: squeeze_fire | 1,216 | 44.5 | 0.11 | 1.46 | -0.98 | 0.62 | 1.61 | 0.98 |
-| setup: vcp | 851 | 39.2 | -0.03 | 1.52 | -1.04 | -0.13 | 0 | 1.26 |
-| regime: MIXED | 2,499 | 44.1 | 0.08 | 1.45 | -1 | 0.73 | 2.55 | 2.41 |
+| ALL | 14,097 | 40.2 | -0.01 | 1.46 | -1 | -0 | 0.83 | 0.63 |
+| score 70-80 | 8,481 | 41.9 | 0.02 | 1.44 | -1 | 0.19 | 1 | 0.8 |
+| score 80+ | 5,616 | 37.6 | -0.05 | 1.51 | -1 | -0.3 | 0.57 | 0.39 |
+| setup: breakout_recent | 1,082 | 34.2 | -0.16 | 1.48 | -1.01 | -0.82 | 0.62 | 0.63 |
+| setup: breakout_unconfirmed | 669 | 34.5 | -0.18 | 1.36 | -0.99 | -0.88 | 0.06 | 0.59 |
+| setup: fresh_flip | 2,127 | 40.6 | -0.02 | 1.42 | -1 | -0.15 | 0.63 | 0.73 |
+| setup: gap_recent | 375 | 37.3 | -0.1 | 1.32 | -0.95 | -0.81 | 0.32 | 0.29 |
+| setup: pocket_pivot | 3,910 | 42.6 | 0.05 | 1.46 | -0.99 | 0.41 | 1.37 | 0.5 |
+| setup: pullback | 3,864 | 39.3 | -0.02 | 1.51 | -1 | -0.05 | 0.56 | 0.51 |
+| setup: squeeze_fire | 1,218 | 44.5 | 0.11 | 1.46 | -0.98 | 0.62 | 1.6 | 0.98 |
+| setup: vcp | 852 | 39.3 | -0.03 | 1.52 | -1.04 | -0.13 | 0 | 1.26 |
+| regime: MIXED | 2,500 | 44.1 | 0.08 | 1.45 | -1 | 0.74 | 2.56 | 2.42 |
 | regime: RISK-OFF | 18 | 55.6 | 0.29 | 1.25 | -0.92 | 1.2 | 6.91 | 8.28 |
-| regime: RISK-ON | 11,577 | 39.3 | -0.03 | 1.47 | -1 | -0.16 | 0.45 | 0.24 |
+| regime: RISK-ON | 11,579 | 39.3 | -0.03 | 1.47 | -1 | -0.17 | 0.44 | 0.24 |
 
 
 **Max loss $** includes commissions · **Net R:R** is what the 2R target pays after commissions · RS 1–99 relative strength · Not financial advice.
